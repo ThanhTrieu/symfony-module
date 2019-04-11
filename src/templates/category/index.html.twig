@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="module-cate">
+        <div class="container">
+            <h1 class="title-module">{{ cate_name }}</h1>
+        </div>
+    </div>
+    {% include 'category/widgets/box-featured.html.twig' with {'listFeatured': listFeatured,'cate_name': cate_name} only %}
+    <section class="game-list">
+        <div class="container pdt-15">
+            <div id="pnlStreamPosts" class="col-big mgr-30">
+                {% include 'category/widgets/contents.html.twig' with {'postList': catePosts} only %}
+                {% if loadMoreToken is not null %}
+                    <div id="loading-panel" class="wrapper hidden">
+                        <div class="wrapper-cell">
+                            <div class="image animated-background"></div>
+                            <div class="text">
+                                <div class="text-title animated-background"></div>
+                                <div class="text-title animated-background"></div>
+                                <div class="text-title animated-background"></div>
+                                <div class="text-title animated-background"></div>
+                                <div class="text-title animated-background"></div>
+                                <div class="text-title animated-background"></div>
+                                <div class="text-title animated-background"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <a id="btn-load-more" href="javascript:void(0)" class="btn-seemore hidden" rel="nofollow"
+                       data-url="{{ path('ajax_cate_stream') }}" data-token="{{ loadMoreToken }}">See more</a>
+                {% endif %}
+                {#{% if lastestPostItem is not null %}
+                    <div class="text-center">
+                        <a id="btnLastestMore" class="btn-seemore" data-id="{{ lastestPostItem.id }}"
+                           data-timestamp="{{ currentPage }}" data-group-id="{{ cate_id }}"
+                           data-url="{{ url_ajax }}">See more
+                        </a>
+                        <img id="imgMoreLoading" class="hidden" src="/images/loading.gif"
+                             title="Please wait while loading data"/>
+                    </div>
+                {% endif %}#}
+            </div>
+            <div class="col-sm fl-right">
+                {% include 'common/featured-stories.html.twig' with {'featuredStories': featuredStories, 'type': 0} only %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

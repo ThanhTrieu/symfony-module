@@ -1,0 +1,36 @@
+<header>
+    <div class="top-head">
+        <ul class="container">
+            <li><span>For advertising: <a rel="nofollow" href="tel:+91 9891575536">+91 9891575536</a></span>
+                <span>For cooperating: <a rel="nofollow" href="mailto:advertise@gurugamer.com">advertise@gurugamer.com</a></span></li>
+            <li>
+                <a rel="nofollow" href="https://www.facebook.com/Gurugamer1" title="" class="fb" target="_blank"><i class="icon-facebook-1"></i></a>
+                <a rel="nofollow" href="https://www.youtube.com/channel/UCEWJIfTBjbGn-aE5gzw_pjQ" class="ic-youtube"><i class="icon-youtube-play"></i></a>
+                {#<a rel="nofollow" href="" title="" class="gg"><i class="icon-google"></i></a>#}
+                {#<a rel="nofollow" href="" title="" class="tw"><i class="icon-twitter-1"></i></a>#}
+                <form action="" class="fr-search js-search-form">
+                    <input maxlength="100" type="text" class="inp js-search-text" placeholder="Search">
+                    <button class="search js-search-submit" type="submit"><i class="icon-search"></i></button>
+                </form>
+            </li>
+        </ul>
+    </div>
+    <section class="menu">
+        <div class="container">
+            {% set cateSlug = (cateSlug is defined)?cateSlug:'' %}
+            {% if seo.is_home is defined %}
+            <h1><a href="/" class="logo" title="{{ home_title }}"></a></h1>
+            {% else %}
+            <a href="/" class="logo" title="{{ home_title }}"></a>
+            {% endif %}
+            <ul class="nav ">
+                <li{% if cateSlug == 'mobile-games' %} class="active"{% endif %}><a href="/mobile-games" title="MOBILE GAMES">MOBILE GAMES</a></li>
+                <li{% if cateSlug == 'esports' %} class="active"{% endif %}><a href="/esports" title="eSPORTS">eSPORTS</a></li>
+                <li{% if cateSlug == 'pc-console' %} class="active"{% endif %}><a href="/pc-console" title="PC/CONSOLE">PC/CONSOLE</a></li>
+                <li{% if cateSlug == 'features' %} class="active"{% endif %}><a href="/features" title="FEATURES">FEATURES</a></li>
+                <li{% if cateSlug == 'reviews' %} class="active"{% endif %}><a href="/reviews" title="REVIEWS">REVIEWS</a></li>
+                <li{% if cateSlug == 'video' %} class="active"{% endif %}><a href="/video" title="VIDEOS">VIDEOS</a></li>
+            </ul>
+        </div>
+    </section>
+</header>

@@ -1,0 +1,6 @@
+search_posts:
+    path: /search
+    defaults: {_controller: App\Controller\Search\IndexController::searchAction}
+ajax_get_search_posts:
+    path: /ajax/search-post.json
+    defaults: {_controller: App\Controller\Search\AjaxController::getSearchPostAction}

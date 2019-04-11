@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% if data is not null %}
+        <section class="box-hot-game">
+            <div class="container">
+                <figure class="item-game-cate">
+                    {% if data.avatar %}
+                        <a href="" class="image" title="{{ tag_name }}">
+                            <img src="{{ data.avatar }}" alt="{{ tag_name }}">
+                        </a>
+                    {% endif %}
+                    <figcaption class="caption">
+                        <p class="info-news"><span class="lnk-org">{{ data.other_tags }}</span></p>
+                        <h1 class="title-news">{{ tag_name }}</h1>
+                        {% if data.release_date %}
+                            <p class="info-news">Release
+                                date: {{ data.release_date }}</p>
+                        {% endif %}
+
+                        {% if data.android_link or data.android_link %}
+                            <p class="mgt-15 ">
+                                {% if data.android_link %}
+                                    <a href="{{ data.android_link }}"
+                                       class="btn-lnk-os">
+                                        <i class="icon-android"></i>Android</a>
+                                {% endif %}
+
+                                {% if data.ios_link %}
+                                    <a href="{{ data.ios_link }}" class="btn-lnk-os">
+                                        <i class="icon-appstore"></i>iOS</a>
+                                {% endif %}
+                            </p>
+                        {% endif %}
+                        <div class="short-desc tag-description tag-info">{{ data.description|raw }}</div>
+                        <summary class="short-desc tag-summary tag-info" style="display: none">{{ data.summary|raw }}</summary>
+                        {% if data.summary %}
+                            <a class="btn-org" id="btn-read-more"
+                               style="cursor: pointer">read
+                                more</a>
+                        {% endif %}
+                        <span class="num">{{ data.points }}</span>
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+    {% endif %}
+    <section class="game-list">
+        <div class="container pdt-15">
+            <div id="pnlStreamPosts" class="col-big mgr-30">
+                {% include 'category/widgets/contents.html.twig' with {'postList': tagPosts} only %}
+                {% if loadMoreToken is not null %}
+                    <div id="loading-panel" class="wrapper hidden">
+                        <div class="wrapper-cell">
+                            <div class="image animated-background"></div>
+                            <div class="text">
+                                <div class="text-title animated-background"></div>
+                                <div class="text-title animated-background"></div>
+                                <div class="text-title animated-background"></div>
+                                <div class="text-title animated-background"></div>
+                                <div class="text-title animated-background"></div>
+                                <div class="text-title animated-background"></div>
+                                <div class="text-title animated-background"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <a id="btn-load-more" href="javascript:void(0)" class="btn-seemore hidden" rel="nofollow"
+                       data-url="{{ path('ajax_tag_stream') }}" data-token="{{ loadMoreToken }}">See more</a>
+                {% endif %}
+            </div>
+            <div class="col-sm fl-right">
+            {% include 'common/featured-stories.html.twig' with {'featuredStories': featuredStories, 'type': 0} only %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

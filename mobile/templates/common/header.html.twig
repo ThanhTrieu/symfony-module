@@ -1,0 +1,37 @@
+<header id="top">
+    <div class="socical" id="socical-header">
+        <a rel="nofollow" href="https://www.facebook.com/Gurugamer1" class="ic-face" target="_blank"><i class="icon-facebook-1"></i></a>
+        {#<a rel="nofollow" href="" class="ic-google"><i class="icon-google"></i></a>#}
+        <a rel="nofollow" href="https://www.youtube.com/channel/UCEWJIfTBjbGn-aE5gzw_pjQ" class="ic-youtube" target="_blank"><i class="icon-youtube-play"></i></a>
+    </div>
+    <div class="menu" id="menu-header">
+        <a href="javascript:void(0);" class="bt-menu js-menu-trigger js-popup-trigger"></a>
+        {% if seo.is_home is defined %}
+        <h1><a href="/" class="logo" title="{{ home_title }}"><span class="ic-logo"></span></a></h1>
+        {% else %}
+        <a href="/" class="logo"><span class="ic-logo"></span></a>
+        {% endif %}
+        <a href="javascript:void(0);" class="search js-search-trigger js-popup-trigger">
+            <i class="icon-search js-icon-close"></i>
+        </a>
+    </div>
+    <ul class="mn-open mobile-menu js-menu js-popup">
+        {% set cateSlug = (cateSlug is defined)?cateSlug:'' %}
+        <li {% if cateSlug == 'esports' %} class="active"{% endif %}><a href="/esports">esports</a></li>
+        <li {% if cateSlug == 'mobile-games' %} class="active"{% endif %}><a href="/mobile-games">MOBILE GAMES</a></li>
+        <li {% if cateSlug == 'pc-console' %} class="active"{% endif %}><a href="/pc-console">PC/CONSOLE</a></li>
+        <li {% if cateSlug == 'features' %} class="active"{% endif %}><a href="/features">featured</a></li>
+        <li {% if cateSlug == 'reviews' %} class="active"{% endif %}><a href="/reviews">reviews</a></li>
+        <li {% if cateSlug == 'video' %} class="active"{% endif %}><a href="/video">Videos</a></li>
+    </ul>
+    <div class="box-search frm-search js-search-form js-popup">
+        <form>
+            <input type="text" class="inp js-search-text" placeholder="Search" maxlength="100">
+            <button class="btn-search js-search-submit" type="submit">
+                <i class="icon-search"></i>
+            </button>
+        </form>
+    </div>
+    <div class="clear"></div>
+    <div id="popupMenuSearch" class=""></div>
+</header>

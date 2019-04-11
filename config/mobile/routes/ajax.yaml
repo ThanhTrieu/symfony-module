@@ -1,0 +1,12 @@
+ajax_post_home_stream:
+    path:   /ajax/home-stream
+    defaults: {_controller: Mobile\Controller\AjaxController::getHomeStreamPosts}
+    options:
+        utf8: true
+ajax_cate_stream:
+    path:     /ajax/cate-stream
+    defaults: {_controller: Mobile\Controller\Category\AjaxController::getCateStreamPosts}
+ajax_tag_stream:
+    path:     /ajax/tag
+    defaults: {_controller: Mobile\Controller\Tag\AjaxController::getTagStreamPosts}
+

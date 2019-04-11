@@ -1,0 +1,19 @@
+<div class="col-sm">
+    <div class="box-news-sm pdt-5 n-mg">
+        <h2 class="title-box">{{ title }}</h2>
+        {% if( posts|length > 0 ) %}
+            {% for article in posts %}
+                <figure class="item-news-left">
+                    <a href="{{ article.url }}" class="image">
+                        <img src="{{ article.avatar }}" alt="">
+                    </a>
+                    <figcaption class="caption">
+                        <h3 class="title-news">
+                            <a href="{{ article.url }}" title="{{ article.title }}">{{ article.title }}</a>
+                        </h3>
+                    </figcaption>
+                </figure>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1 class="title-module mtm">{{ cate_name }}</h1>
+    {% include 'category/widgets/box-featured.html.twig' with {'listFeatured': listFeatured,'cate_name': cate_name} only %}
+    <section class="pdb-20">
+        <div class="container">
+            <h3 class="title-box">latest stories<s></s></h3>
+            <div id="pnlStreamPosts">
+                {% include 'category/widgets/contents.html.twig' with {'postList': catePosts} only %}
+                {% if loadMoreToken is not null %}
+                    <div id="loading-panel" class="wrapper hidden">
+                        <div class="text-title animated-background"></div>
+                        <div class="wrapper-cell">
+                            <div class="image animated-background"></div>
+                            <div class="text">
+                                <div class="text-title animated-background"></div>
+                                <div class="text-title animated-background"></div>
+                                <div class="text-title animated-background"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <a id="btn-load-more" href="javascript:void(0)" class="seemore hidden" rel="nofollow"
+                       data-url="{{ path('ajax_cate_stream') }}" data-token="{{ loadMoreToken }}">See more</a>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

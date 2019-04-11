@@ -1,0 +1,65 @@
+
+var tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+var player;
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('mainPlayVideo', {
+        height: '100%',
+        width: '100%',
+        videoId: getIdVideoYouTube(),
+        playerVars: {
+            autoplay: 0,
+            loop: 0,
+            controls: 1,
+            showinfo: 0,
+            autohide: 1,
+            modestbranding: 1,
+            //enablejsapi: 1,
+            //origin: getdomainSite(),
+            vq: 'hd1080'
+        },
+        /*
+        events: {
+            //'onReady': onPlayerReady,
+            //'onStateChange': onPlayerStateChange
+        }
+        */
+    });
+}
+
+function onPlayerReady(event) {
+    event.target.playVideo();
+}
+
+var done = false;
+function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.PLAYING && !done) {
+        setTimeout(stopVideo, 6000);
+        done = true;
+    }
+}
+function stopVideo() {
+    player.stopVideo();
+}
+
+var idYoutube = null;
+function getIdVideoYouTube() {
+
+    idYoutube = document.getElementById('idVideoYoutube');
+    if(idYoutube){
+        idYoutube = idYoutube.value;
+    }
+    return idYoutube;
+}
+var domain = null;
+function getdomainSite() {
+    domain = document.getElementById('domainOrigin');
+    if(domain){
+        domain = domain.value;
+    }
+    return domain;
+}

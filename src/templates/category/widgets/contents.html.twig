@@ -1,0 +1,24 @@
+{% if postList is defined %}
+    {% for key, item in postList %}
+        <figure id="item-{{ item.id }}" class="item-news">
+            <a href="{{ item.url }}" class="image" title="{{ item.title }}">
+                <img src="{{ item.avatar }}" alt="{{ item.title }}">
+                {% if item.media_html is defined %}
+                    {{ item.media_html | raw }}
+                {% endif %}
+            </a>
+            <figcaption class="caption">
+                <h3 class="title-news">
+                    <a href="{{ item.url }}" class="title-news" title="{{ item.title }}">{{ item.title }}</a>
+                </h3>
+                {% if item.cate_name is defined %}
+                    <p class="info-news">
+                        <a href="{{ item.cate_url }}" title="{{ item.cate_name }}" class="lnk-org">{{ item.cate_name }}</a> -
+                        <span class="time-ago" title="{{ item.publish_time_ago }}">{{ item.s_publish_time }}</span>
+                    </p>
+                {% endif %}
+                <p class="short-desc">{{ item.sapo }}</p>
+            </figcaption>
+        </figure>
+    {% endfor %}
+{% endif %}

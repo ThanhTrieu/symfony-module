@@ -1,0 +1,8 @@
+# Example
+tag:
+    path:     /{tagSlug}.html
+    defaults: {_controller: App\Controller\Tag\IndexController::index}
+    requirements:
+        tagSlug: "[a-z0-9\\-_‘’%]+"
+    options:
+        utf8: true

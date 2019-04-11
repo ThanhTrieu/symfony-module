@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <section class="pvideo">
+        {% if firstVideos %}
+        <figure class="news-hot-big" id="box-video">
+            {#<a href="{{ firstVideos.url }}" class="image" title="{{ firstVideos.title }}">#}
+                {#<img src="{{ firstVideos.avatar }}" alt="{{ firstVideos.title }}">#}
+                {#<span class="play"><i class="icon-play"></i></span>#}
+            {#</a>#}
+            <div class="image">
+                <div class="container-video-mobile">
+                    <div id="mainPlayVideo"></div>
+                </div>
+            </div>
+            <input type="hidden" value="{{ idVideoYoutube }}" id="idVideoYoutube">
+            <input type="hidden" value="{{ firstVideos.source_video }}" id="hddUrlVideos"/>
+            <input type="hidden" value="{{ firstVideos.avatar }}" id="avatarUrlVideos"/>
+            <input type="hidden" value="{{ videoId }}" id="hddIdVideos"/>
+            <input type="hidden" value="{{ domain }}" id="domainOrigin">
+            <figcaption class="caption">
+                <h1 class="title-big">
+                    <a href="{{ firstVideos.url }}" title="{{ firstVideos.title }}">
+                        {{ firstVideos.title|raw }}
+                    </a>
+                </h1>
+            </figcaption>
+        </figure>
+        <div class="clear"></div>
+        {% endif %}
+        <div id="pnlStreamPosts">
+            {% if listTopVideo|length %}
+                {% include 'video/widgets/list-video-item.html.twig' with {'listItemVideo': listTopVideo, 'ajax': 0} only %}
+            {% endif %}
+            {% if loadMoreToken is not null %}
+            <div id="loading-panel" class="wrapper hidden">
+                <div class="text-title animated-background"></div>
+                <div class="wrapper-cell">
+                    <div class="image animated-background"></div>
+                    <div class="text">
+                        <div class="text-title animated-background"></div>
+                        <div class="text-title animated-background"></div>
+                        <div class="text-title animated-background"></div>
+                    </div>
+                </div>
+            </div>
+            <a href="javascript:void(0);" id="btn-load-more" class="btn-seemore seemore hidden" rel="nofollow" data-url="{{ path('video_ajax') }}" data-token="{{ loadMoreToken }}">See more</a>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}

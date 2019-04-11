@@ -1,0 +1,41 @@
+parameters:
+    domain: http://india-game.local
+    mobile: http://m.india-game.local
+    site_name: Indian Technology
+    home_title: Global Auto News, Rumours, Scoops, Spyshots and Renders with emphasis on the Indian Auto Market
+    site_desc: Global Auto News, Rumours, Scoops, Spyshots and Renders with emphasis on the Indian Auto Market.
+    site_key:
+    site_logo: https://tech-img.indianautosblog.com/2017/07/Logo.png
+    facebook_app_id: 1924560867849013
+# Common config
+#    static_url: http://static.gurugamer.com
+#    static_folder: '/desktop'
+    static_url: ''
+    static_folder: ''
+    static_version: 1.0.0
+    static_private_key: Z3VydWdhbWVyLmNvbQ==
+    static_expire: 4076011907
+    media_url: https://img.gurugamer.com
+# Crypt config
+    crypt:
+        token: 'aWFiIHByZXZpZXcgc2FsdA=='
+        key: 'hVc7pnEjxkFkk7NuAi7C9g=='
+        iv: 'KWHowdrQ9PUoEbcII1B7mw=='
+    elasticsearch_url: http://172.16.0.116:9200/
+# Cache config
+    cache_time:
+        hour: 3600
+        short: 21600
+        medium: 86400
+        long: 604800
+#Redis
+    cache_config:
+        refresh_cache: 123456
+        manual_cache: 123456
+        allow_cache_data: 0
+        allow_cache_page: 0
+        redisArticle: 172.16.0.13:6377:8:2.5
+        redisCachePage: 172.16.0.13:6377:5:2.5
+        redisUpdateView: 172.16.0.13:6377:15
+#User and pass
+    clear_cache_password: test123@123

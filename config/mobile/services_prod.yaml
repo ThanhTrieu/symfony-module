@@ -1,0 +1,12 @@
+parameters:
+# Common config
+    static_folder: ''
+#Redis
+    cache_config:
+        refresh_cache: 123456
+        manual_cache: 123456
+        allow_cache_data: 0
+        allow_cache_page: 0
+        redisArticle: 172.16.0.13:6377:8:2.5
+        redisCachePage: 172.16.0.13:6377:5:2.5
+        redisUpdateView: 172.16.0.13:6377:15

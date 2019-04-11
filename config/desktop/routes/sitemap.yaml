@@ -1,0 +1,17 @@
+sitemap:
+  path: /sitemap.xml
+  controller: App\Controller\SitemapController::indexAction
+sitemap_category:
+  path: /sitemaps/category.xml
+  controller: App\Controller\SitemapController::categoryAction
+sitemap_tag_index:
+  path: /sitemaps/tag.xml
+  controller: App\Controller\SitemapController::tagIndexAction
+sitemap_tag:
+  path: /sitemaps/tag-{page}.xml
+  controller: App\Controller\SitemapController::tagAction
+  requirements:
+      postId: "\\d+"
+sitemap_article:
+  path: /sitemaps/article-{dateString}.xml
+  controller: App\Controller\SitemapController::articleAction

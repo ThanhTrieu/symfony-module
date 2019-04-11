@@ -1,0 +1,17 @@
+{% if featuredStories %}
+<div class="box-news-sm featured-story-box {{ type == 1? 'n-mg':'mgt-25' }}">
+    <h2 class="title-box">FEATURED STORIES</h2>
+    {% for key, item in featuredStories %}
+        <figure class="item-news-left">
+            <a href="{{ item.url }}" class="image" title="{{ item.title }}">
+                <img width="170px" src="{{ item.avatar }}" alt="{{ item.title }}">
+            </a>
+            <figcaption class="caption">
+                <h3 class="title-news trim-words">
+                    <a href="{{ item.url }}" title="{{ item.title }}">{{ item.title }}</a>
+                </h3>
+            </figcaption>
+        </figure>
+    {% endfor %}
+</div>
+{% endif %}

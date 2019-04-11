@@ -1,0 +1,23 @@
+index:
+    path: /
+    controller: Mobile\Controller\DefaultController::index
+page404:
+    path: "/404"
+    defaults: {_controller: Mobile\Controller\DefaultController:_404page}
+term_condition :
+    path: /term-condition
+    defaults: {_controller: Mobile\Controller\DefaultController:termCondition}
+sitemap_all:
+    resource: "routes/sitemap.yaml"
+search_all:
+    resource: "routes/search.yaml"
+video_all:
+    resource: "routes/video.yaml"
+ajax_post_all:
+    resource: "routes/ajax.yaml"
+post_all:
+    resource: "routes/post.yaml"
+category_all:
+    resource: "routes/category.yaml"
+tag_all:
+    resource: "routes/tag.yaml"

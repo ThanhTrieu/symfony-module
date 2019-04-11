@@ -1,0 +1,44 @@
+{% if trendingStories %}
+<section class="box-trending">
+    <div class="container">
+        <h2 class="title-box">TRENDING STORIES</h2>
+        {% for item in trendingStories %}
+        <figure class="item-news-col{% if loop.index % 3 == 0 %} last{% endif %}">
+            <a href="{{ item.url }}" class="image" title="{{ item.title }}">
+                <img src="{{ item.avatar }}" alt="{{ item.title }}">
+            </a>
+            <figcaption class="caption">
+                <h3 class="title-news"><a href="{{ item.url }}" title="{{ item.title }}">{{ item.title }}</a></h3>
+            </figcaption>
+        </figure>
+        {% endfor %}
+        {#<figure class="item-news-col">
+            <a href="" class="image">
+                <img src="images/news-col-hot.jpg" alt="">
+            </a>
+            <figcaption class="caption">
+                <h3 class="title-news"><a href="" title="">StarLadder i-League PUBG Season 2 Participants</a></h3>
+
+            </figcaption>
+        </figure>
+        <figure class="item-news-col">
+            <a href="" class="image">
+                <img src="images/news-col-hot.jpg" alt="">
+            </a>
+            <figcaption class="caption">
+                <h3 class="title-news"><a href="" title="">StarLadder i-League PUBG Season 2 Participants</a></h3>
+
+            </figcaption>
+        </figure>
+        <figure class="item-news-col last">
+            <a href="" class="image">
+                <img src="images/news-col-hot.jpg" alt="">
+            </a>
+            <figcaption class="caption">
+                <h3 class="title-news"><a href="" title="">StarLadder i-League PUBG Season 2 Participants</a></h3>
+
+            </figcaption>
+        </figure>#}
+    </div>
+</section>
+{% endif %}

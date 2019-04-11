@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% if data is not null %}
+        <section class="pdb-10">
+            <figure class="news-big pdb-5">
+                {% if data.avatar %}
+                    <a href="" class="image" title="{{ tag_name }}">
+                        <img src="{{ data.avatar }}" alt="{{ tag_name }}">
+                    </a>
+                {% endif %}
+                <figcaption class="caption">
+                    <a href="" class="tag-game">{{ data.other_tags }}</a>
+                    <h1 class="title-big n-mg">
+                        {{ tag_name }}
+                    </h1>
+                    <p class="time-start">Release date: {{ data.release_date }}</p>
+                    <span class="numb">{{ data.points }}</span>
+                    {% if data.android_link or data.android_link %}
+                        <p class="pdt-10">
+                            {% if data.android_link %}
+                                <a href="{{ data.android_link }}"
+                                   class="btn-lnk-os">
+                                    <i class="icon-android"></i>Android</a>
+                            {% endif %}
+
+                            {% if data.ios_link %}
+                                <a href="{{ data.ios_link }}" class="btn-lnk-os">
+                                    <i class="icon-apple"></i>iOS</a>
+                            {% endif %}
+                        </p>
+                    {% endif %}
+                    <p class="s-desc tag-description">{{ data.description|raw }}</p>
+                    {% if data.summary %}
+                        <div class="s-desc tag-summary" style="display: none">{{ data.summary|raw }}</div>
+                        <a class="readmore" id="btn-read-more"
+                           style="cursor: pointer">read
+                            more</a>
+                    {% endif %}
+                </figcaption>
+            </figure>
+
+        </section>
+    {% endif %}
+    <section class="pdb-20">
+        <div class="container">
+            <p class="result"><b>{{ total_count }}</b> results found</p>
+            <div id="pnlStreamPosts" >
+                {% include 'category/widgets/contents.html.twig' with {'postList': tagPosts} only %}
+                {% if loadMoreToken is not null %}
+                    <div id="loading-panel" class="wrapper hidden">
+                        <div class="text-title animated-background"></div>
+                        <div class="wrapper-cell">
+                            <div class="image animated-background"></div>
+                            <div class="text">
+                                <div class="text-title animated-background"></div>
+                                <div class="text-title animated-background"></div>
+                                <div class="text-title animated-background"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <a id="btn-load-more" href="javascript:void(0)" class="seemore hidden" rel="nofollow"
+                       data-url="{{ path('ajax_tag_stream') }}" data-token="{{ loadMoreToken }}">See more</a>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

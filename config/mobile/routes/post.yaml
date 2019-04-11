@@ -1,0 +1,27 @@
+# Example
+post_detail:
+    path:     /{cateSlug}/{slug}-{postId}
+    defaults: {_controller: Mobile\Controller\Post\IndexController::detail}
+    requirements:
+        cateSlug: "[a-z0-9\\-]+"
+        slug: "[a-z0-9\\-_‘’%]+"
+        postId: "\\d+"
+    options:
+        utf8: true
+post_detail_short:
+    path:     /post-{postId}
+    defaults: {_controller: Mobile\Controller\Post\IndexController::detailShortAction}
+    requirements:
+       postId: "\\d+"
+post_amp_detail:
+    path:     /{cateSlug}/{slug}-{postId}/amp
+    defaults: {_controller: Mobile\Controller\Post\AmpController::detail}
+    requirements:
+        cateSlug: "[a-z0-9\\-]+"
+        slug: "[a-z0-9\\-_‘’%]+"
+        postId: "\\d+"
+    options:
+        utf8: true
+update_view:
+    path:  /lg.gif
+    defaults: {_controller: Mobile\Controller\Post\AjaxController:updateView}

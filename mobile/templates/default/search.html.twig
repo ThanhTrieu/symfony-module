@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <section class="mgt-45" id="content-search">
+        <div class="container">
+            <div class="pdb-10">
+                <h1 class="title-result" style="word-break: break-word; font-size: 20px;">
+                    <span></span>Search:</span>  {{ keyword|raw }}
+                </h1>
+                <span class="txt-result"><b>{{ totalPosts|default(0) }}</b> results found</span>
+            </div>
+            <hr>
+            {% if posts|length > 0  %}
+            <div id="pnlStreamPosts">
+                {% include 'category/widgets/contents.html.twig' with {'postList': posts} only %}
+                {% if loadMoreToken is not null %}
+                    <div id="loading-panel" class="wrapper hidden">
+                        <div class="text-title animated-background"></div>
+                        <div class="wrapper-cell">
+                            <div class="image animated-background"></div>
+                            <div class="text">
+                                <div class="text-title animated-background"></div>
+                                <div class="text-title animated-background"></div>
+                                <div class="text-title animated-background"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <a id="btn-load-more" href="javascript:void(0)" class="btn-seemore seemore hidden" rel="nofollow" data-url="{{ path('ajax_get_search_posts') }}" data-token="{{ loadMoreToken }}">See more</a>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}

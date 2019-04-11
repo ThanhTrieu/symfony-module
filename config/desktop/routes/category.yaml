@@ -1,0 +1,18 @@
+cate:
+    path:  /{cateSlug}
+    defaults: {_controller: App\Controller\Category\IndexController::list}
+    requirements:
+        cateSlug: "[a-z0-9\\-]+"
+sub_cate:
+    path:     /{parentSlug}/{cateSlug}
+    defaults: {_controller: App\Controller\Category\IndexController::list}
+    requirements:
+        parentSlug: "[a-z0-9\\-]+"
+        cateSlug: "[a-z0-9\\-]+"
+sub_cate_level2:
+    path:     /{rootSlug}/{parentSlug}/{cateSlug}
+    defaults: {_controller: App\Controller\Category\IndexController::list}
+    requirements:
+        rootSlug: "[a-z0-9\\-]+"
+        parentSlug: "[a-z0-9\\-]+"
+        cateSlug: "[a-z0-9\\-]+"

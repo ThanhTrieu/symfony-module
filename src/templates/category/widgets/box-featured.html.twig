@@ -1,0 +1,41 @@
+{% if listFeatured is defined %}
+    <section class="specical specical-cate">
+        <div class="container">
+            {% for key, item in listFeatured %}
+            {% if key == 0 %}
+            <div class="col-big mgr-30">
+                <figure class="item-news-big">
+                    <a href="{{ item.url }}" class="image" title="{{ item.title }}">
+                        <img src="{{ item.avatar }}" alt="{{ item.title }}">
+                    </a>
+                    <figcaption class="caption">
+                        <p class="info-news time-ago" title="{{ item.publish_time_ago }}">{{ item.s_publish_time }}</p>
+                        <h3 class="title-news">
+                            <a href="{{ item.url }}" class="title-news" title="{{ item.titleHot }}">{{ item.titleHot }}</a>
+                        </h3>
+                        <p class="short-desc">{{ item.sapo }}</p>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-sm">
+                {% else %}
+                    <figure class="item-news">
+                        <a href="{{ item.url }}" class="image" title="{{ item.title }}">
+                            <img src="{{ item.avatar }}" alt="{{ item.title }}">
+                        </a>
+                        <figcaption class="caption">
+                            <p class="info-news time-ago"
+                               title="{{ item.publish_time_ago }}">{{ item.s_publish_time }}</p>
+                            <h3 class="title-news">
+                                <a href="{{ item.url }}" class="title-news" title="{{ item.title }}">
+                                    {{ item.title }}
+                                </a>
+                            </h3>
+                        </figcaption>
+                    </figure>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endif %}

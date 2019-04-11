@@ -1,0 +1,43 @@
+{% if hotVideos %}
+<div class="col-sm pdt-25">
+    <h2 class="title-box">HOT VIDEOS <a href="{{ path('cate', {'cateSlug': 'video'}) }}" title="" class="Seemore">See more</a></h2>
+    {% for item in hotVideos %}
+    <figure class="item-video">
+        <a href="{{ item.url }}" class="image" title="{{ item.title }}">
+            <img src="{{ item.avatar }}" alt="{{ item.title }}">
+            <span class="tag-video"><i class="icon-play"></i></span>
+        </a>
+        <figcaption class="caption">
+            <h3 class="title-news"><a href="{{ item.url }}" class="title-news" title="{{ item.title }}">{{ item.title }}</a></h3>
+        </figcaption>
+    </figure>
+    {% endfor %}
+    {#<figure class="item-video">
+        <a href="" class="image">
+            <img src="images/img-news-list.jpg" alt="">
+            <span class="tag-video"><i class="icon-play"></i></span>
+        </a>
+        <figcaption class="caption">
+            <h3 class="title-news"><a href="" class="title-news" title="">PJ Esports Festival by Orange Esports</a></h3>
+        </figcaption>
+    </figure>
+    <figure class="item-video">
+        <a href="" class="image">
+            <img src="images/img-news-list.jpg" alt="">
+            <span class="tag-video"><i class="icon-play"></i></span>
+        </a>
+        <figcaption class="caption">
+            <h3 class="title-news"><a href="" class="title-news" title="">PJ Esports Festival by Orange Esports</a></h3>
+        </figcaption>
+    </figure>
+    <figure class="item-video">
+        <a href="" class="image">
+            <img src="images/img-news-list.jpg" alt="">
+            <span class="tag-video"><i class="icon-play"></i></span>
+        </a>
+        <figcaption class="caption">
+            <h3 class="title-news"><a href="" class="title-news" title="">PJ Esports Festival by Orange Esports</a></h3>
+        </figcaption>
+    </figure>#}
+</div>
+{% endif %}

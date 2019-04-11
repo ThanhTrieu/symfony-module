@@ -1,0 +1,326 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% if featuredPosts | length %}
+    <section class="box-hot">
+        <div class="container">
+            <figure class="news-hot-big">
+                <a href="{{ featuredPosts.topFeaturedPost.url }}" class="image" title="{{ featuredPosts.topFeaturedPost.title }}">
+                    <img src="{{ featuredPosts.topFeaturedPost.avatar }}" alt="{{ featuredPosts.topFeaturedPost.title }}"></a>
+                <figcaption class="caption">
+                    <p class="info-news"><a href="{{ featuredPosts.topFeaturedPost.cate_url }}" title="{{ featuredPosts.topFeaturedPost.cate_name }}" class="lnk-org">{{ featuredPosts.topFeaturedPost.cate_name }}</a>
+                        -  <span class="time-ago" title="{{ featuredPosts.topFeaturedPost.publish_time_ago }}">{{ featuredPosts.topFeaturedPost.s_publish_time }}</span></p>
+                    <h2 class="title-big">
+                        <a href="{{ featuredPosts.topFeaturedPost.url }}" title="{{ featuredPosts.topFeaturedPost.title }}">{{ featuredPosts.topFeaturedPost.title }}</a>
+                    </h2>
+                    <p class="short-desc">{{ featuredPosts.topFeaturedPost.sapo }}</p>
+                    <a href="{{ featuredPosts.topFeaturedPost.url }}" title="{{ featuredPosts.topFeaturedPost.title }}" class="btn-org">read more</a>
+                </figcaption>
+            </figure>
+
+        </div>
+    </section>
+    <section class="hot-news-thumb">
+        <div class="container">
+            {% for post in featuredPosts.otherFeaturedPosts %}
+                <figure class="news-thumb">
+                    <a href="{{ post.url }}" class="image" title="{{ post.title }}"><img src="{{ post.avatar }}" alt="{{ post.title }}"></a>
+                    <a href="{{ post.cate_url }}" class="btn-red" title="{{ post.cate_name }}">{{ post.cate_name }}</a>
+                    <figcaption class="caption">
+                        <p class="info-news time-ago" title="{{ featuredPosts.topFeaturedPost.publish_time_ago }}">{{ featuredPosts.topFeaturedPost.s_publish_time }}</p>
+                        <h3 class="title-md">
+                            <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                        </h3>
+                    </figcaption>
+                </figure>
+            {% endfor %}
+            {#<figure class="news-thumb">
+                <a href="" class="image" title=""><img src="images/img-news.jpg" alt=""></a>
+                <a href="" class="btn-red" title="">Mobile Games</a>
+                <figcaption class="caption">
+                    <p class="info-news"> 32 minutes ago</p>
+                    <h3 class="title-md">
+                        <a href="" title="">Team Aster take ESL One Hamburg 2018 spot for China</a>
+                    </h3>
+                </figcaption>
+            </figure>
+            <figure class="news-thumb">
+                <a href="" class="image" title=""><img src="images/img-news.jpg" alt=""></a>
+                <a href="" class="btn-red">Mobile Games</a>
+                <figcaption class="caption">
+                    <p class="info-news"> 32 minutes ago</p>
+                    <h3 class="title-md">
+                        <a href="" title="">Team Aster take ESL One Hamburg 2018 spot for China</a>
+                    </h3>
+                </figcaption>
+            </figure>
+            <figure class="news-thumb">
+                <a href="" class="image" title=""><img src="images/img-news.jpg" alt=""></a>
+                <a href="" class="btn-red">Mobile Games</a>
+                <figcaption class="caption">
+                    <p class="info-news"> 32 minutes ago</p>
+                    <h3 class="title-md">
+                        <a href="" title="" title="">Team Aster take ESL One Hamburg 2018 spot for China</a>
+                    </h3>
+                </figcaption>
+            </figure>#}
+        </div>
+    </section>
+    {% endif %}
+    <section class="pdt-50">
+        <div class="container">
+            <div class="col-big mgr-30">
+                {{ include('default/widgets/home-trending-tags.html.twig') }}
+                <div class="clear"></div>
+                {% include 'default/widgets/home-stream-posts.html.twig' with {'homeStreamPosts': firstHomeStreamPosts, 'featuredStory': firstFeaturedStory, 'boxSeoPosts': boxLinks, 'positionInject': positionInject} %}
+                {#<figure class="item-news">
+                    <a href="" class="image"><img src="images/img-news-list.jpg" alt=""></a>
+                    <figcaption class="caption">
+                        <h3 class="title-news"><a href="" class="title-news" title="">PJ Esports Festival by Orange Esports</a></h3>
+                        <p class="info-news"><a href="" title="" class="lnk-org">MOBILE GAMES</a>  -  32 minutes ago</p>
+                        <p class="short-desc">TNC Predator ran through the ESL One Hamburg 2018 SEA qualifiers with an undefeated streak to claim the sole spot for the main event next month</p>
+                    </figcaption>
+                </figure>
+                <figure class="item-news">
+                    <a href="" class="image">
+                        <img src="images/img-news-list.jpg" alt="">
+                        <span class="tag-video"><i class="icon-videocam"></i></span>
+                    </a>
+                    <figcaption class="caption">
+                        <h3 class="title-news"><a href="" class="title-news" title="">PJ Esports Festival by Orange Esports</a></h3>
+                        <p class="info-news"><a href="" title="" class="lnk-org">MOBILE GAMES</a>  -  32 minutes ago</p>
+                        <p class="short-desc">TNC Predator ran through the ESL One Hamburg 2018 SEA qualifiers with an undefeated streak to claim the sole spot for the main event next month</p>
+                    </figcaption>
+                </figure>
+                <figure class="item-news">
+                    <a href="" class="image">
+                        <img src="images/img-news-list.jpg" alt="">
+                        <span class="tag-video"><i class="icon-videocam"></i></span>
+                    </a>
+                    <figcaption class="caption">
+                        <h3 class="title-news"><a href="" class="title-news" title="">PJ Esports Festival by Orange Esports</a></h3>
+                        <p class="info-news"><a href="" title="" class="lnk-org">eSPORTS</a>  -  32 minutes ago</p>
+                        <p class="short-desc">TNC Predator ran through the ESL One Hamburg 2018 SEA qualifiers with an undefeated streak to claim the sole spot for the main event next month</p>
+                    </figcaption>
+                </figure>
+                <figure class="item-news">
+                    <a href="" class="image"><img src="images/img-news-list.jpg" alt=""></a>
+                    <figcaption class="caption">
+                        <h3 class="title-news"><a href="" class="title-news" title="">PJ Esports Festival by Orange Esports</a></h3>
+                        <p class="info-news"><a href="" title="" class="lnk-org">eSPORTS</a>  -  32 minutes ago</p>
+                        <p class="short-desc">TNC Predator ran through the ESL One Hamburg 2018 SEA qualifiers with an undefeated streak to claim the sole spot for the main event next month</p>
+                    </figcaption>
+                </figure>
+                <figure class="item-news">
+                    <a href="" class="image"><img src="images/img-news-list.jpg" alt=""></a>
+                    <figcaption class="caption">
+                        <h3 class="title-news"><a href="" class="title-news" title="">PJ Esports Festival by Orange Esports</a></h3>
+                        <p class="info-news"><a href="" title="" class="lnk-org">MOBILE GAMES</a>  -  32 minutes ago</p>
+                        <p class="short-desc">TNC Predator ran through the ESL One Hamburg 2018 SEA qualifiers with an undefeated streak to claim the sole spot for the main event next month</p>
+                    </figcaption>
+                </figure>
+                <figure class="item-news last">
+                    <a href="" class="image"><img src="images/img-news-list.jpg" alt=""></a>
+                    <figcaption class="caption">
+                        <h3 class="title-news"><a href="" class="title-news" title="">PJ Esports Festival by Orange Esports</a></h3>
+                        <p class="info-news"><a href="" title="" class="lnk-org">PC/Console</a>  -  32 minutes ago</p>
+                        <p class="short-desc">TNC Predator ran through the ESL One Hamburg 2018 SEA qualifiers with an undefeated streak to claim the sole spot for the main event next month</p>
+                    </figcaption>
+                </figure>
+                <ul class="box-lnk">
+                    <li><i class="icon-right-open-1"></i><a href="" title="">God of War 3 guide and walkthrough</a></li>
+                    <li><i class="icon-right-open-1"></i><a href="" title="">God of War 3 guide and walkthrough</a></li>
+                    <li><i class="icon-right-open-1"></i><a href="" title="">How to unlock all items in God of War 3</a></li>
+                    <li><i class="icon-right-open-1"></i><a href="" title="">How to unlock all items in God of War 3</a></li>
+                    <li><i class="icon-right-open-1"></i><a href="" title="">God of War combat guide</a></li>
+                    <li><i class="icon-right-open-1"></i><a href="" title="">God of War combat guide</a></li>
+                </ul>
+                <figure class="item-news-big mgb-30">
+                    <a href="" class="image"><img src="images/news-big.jpg" alt="">
+                        <span class="tag-video"><i class="icon-videocam"></i></span>
+                    </a>
+                    <figcaption class="caption">
+                        <a class="btn-tag" href="" title="">FEATURED STORY</a>
+                        <h3 class="title-news"><a href="" title="">Google's first Android phone rivaled the original iPhone like earlier brands never could</a></h3>
+                        <p class="info-news"><a href="" title="" class="lnk-org">Mobile Games</a>  -  32 minutes ago</p>
+
+                    </figcaption>
+                </figure>
+                <figure class="item-news">
+                    <a href="" class="image">
+                        <img src="images/img-news-list.jpg" alt="">
+                        <span class="tag-video"><i class="icon-videocam"></i></span>
+                    </a>
+                    <figcaption class="caption">
+                        <h3 class="title-news"><a href="" class="title-news" title="">PJ Esports Festival by Orange Esports</a></h3>
+                        <p class="info-news"><a href="" title="" class="lnk-org">eSPORTS</a>  -  32 minutes ago</p>
+                        <p class="short-desc">TNC Predator ran through the ESL One Hamburg 2018 SEA qualifiers with an undefeated streak to claim the sole spot for the main event next month</p>
+                    </figcaption>
+                </figure>
+                <figure class="item-news">
+                    <a href="" class="image"><img src="images/img-news-list.jpg" alt=""></a>
+                    <figcaption class="caption">
+                        <h3 class="title-news"><a href="" class="title-news" title="">PJ Esports Festival by Orange Esports</a></h3>
+                        <p class="info-news"><a href="" title="" class="lnk-org">eSPORTS</a>  -  32 minutes ago</p>
+                        <p class="short-desc">TNC Predator ran through the ESL One Hamburg 2018 SEA qualifiers with an undefeated streak to claim the sole spot for the main event next month</p>
+                    </figcaption>
+                </figure>
+                <figure class="item-news">
+                    <a href="" class="image"><img src="images/img-news-list.jpg" alt=""></a>
+                    <figcaption class="caption">
+                        <h3 class="title-news"><a href="" class="title-news" title="">PJ Esports Festival by Orange Esports</a></h3>
+                        <p class="info-news"><a href="" title="" class="lnk-org">MOBILE GAMES</a>  -  32 minutes ago</p>
+                        <p class="short-desc">TNC Predator ran through the ESL One Hamburg 2018 SEA qualifiers with an undefeated streak to claim the sole spot for the main event next month</p>
+                    </figcaption>
+                </figure>
+                <figure class="item-news last">
+                    <a href="" class="image"><img src="images/img-news-list.jpg" alt=""></a>
+                    <figcaption class="caption">
+                        <h3 class="title-news"><a href="" class="title-news" title="">PJ Esports Festival by Orange Esports</a></h3>
+                        <p class="info-news"><a href="" title="" class="lnk-org">PC/Console</a>  -  32 minutes ago</p>
+                        <p class="short-desc">TNC Predator ran through the ESL One Hamburg 2018 SEA qualifiers with an undefeated streak to claim the sole spot for the main event next month</p>
+                    </figcaption>
+                </figure>#}
+            </div>
+            <div class="col-sm">
+                {{ include('default/widgets/home-game-tags.html.twig') }}
+                {{ include('default/widgets/home-reviews.html.twig') }}
+            </div>
+        </div>
+    </section>
+    {{ include('default/widgets/home-trending-stories.html.twig') }}
+    <section>
+        <div class="container pdt-15">
+            <div id="pnlStreamPosts" class="col-big mgr-30">
+                {% include 'default/widgets/home-stream-posts.html.twig' with {'homeStreamPosts': secondHomeStreamPosts, 'featuredStory': secondFeaturedStory, 'boxSeoPosts': null, 'positionInject': positionInject} %}
+                {#<figure class="item-news">
+                    <a href="" class="image">
+                        <img src="images/img-news-list.jpg" alt="">
+                        <span class="tag-video"><i class="icon-videocam"></i></span>
+                    </a>
+                    <figcaption class="caption">
+                        <h3 class="title-news"><a href="" class="title-news" title="">PJ Esports Festival by Orange Esports</a></h3>
+                        <p class="info-news"><a href="" title="" class="lnk-org">eSPORTS</a>  -  32 minutes ago</p>
+                        <p class="short-desc">TNC Predator ran through the ESL One Hamburg 2018 SEA qualifiers with an undefeated streak to claim the sole spot for the main event next month</p>
+                    </figcaption>
+                </figure>
+                <figure class="item-news">
+                    <a href="" class="image">
+                        <img src="images/img-news-list.jpg" alt="">
+                        <span class="tag-video"><i class="icon-videocam"></i></span>
+                    </a>
+                    <figcaption class="caption">
+                        <h3 class="title-news"><a href="" class="title-news" title="">PJ Esports Festival by Orange Esports</a></h3>
+                        <p class="info-news"><a href="" title="" class="lnk-org">eSPORTS</a>  -  32 minutes ago</p>
+                        <p class="short-desc">TNC Predator ran through the ESL One Hamburg 2018 SEA qualifiers with an undefeated streak to claim the sole spot for the main event next month</p>
+                    </figcaption>
+                </figure>
+                <figure class="item-news">
+                    <a href="" class="image">
+                        <img src="images/img-news-list.jpg" alt="">
+                        <span class="tag-video"><i class="icon-videocam"></i></span>
+                    </a>
+                    <figcaption class="caption">
+                        <h3 class="title-news"><a href="" class="title-news" title="">PJ Esports Festival by Orange Esports</a></h3>
+                        <p class="info-news"><a href="" title="" class="lnk-org">eSPORTS</a>  -  32 minutes ago</p>
+                        <p class="short-desc">TNC Predator ran through the ESL One Hamburg 2018 SEA qualifiers with an undefeated streak to claim the sole spot for the main event next month</p>
+                    </figcaption>
+                </figure>
+                <figure class="item-news">
+                    <a href="" class="image">
+                        <img src="images/img-news-list.jpg" alt="">
+                        <span class="tag-video"><i class="icon-videocam"></i></span>
+                    </a>
+                    <figcaption class="caption">
+                        <h3 class="title-news"><a href="" class="title-news" title="">PJ Esports Festival by Orange Esports</a></h3>
+                        <p class="info-news"><a href="" title="" class="lnk-org">eSPORTS</a>  -  32 minutes ago</p>
+                        <p class="short-desc">TNC Predator ran through the ESL One Hamburg 2018 SEA qualifiers with an undefeated streak to claim the sole spot for the main event next month</p>
+                    </figcaption>
+                </figure>
+                <figure class="item-news">
+                    <a href="" class="image">
+                        <img src="images/img-news-list.jpg" alt="">
+                        <span class="tag-video"><i class="icon-videocam"></i></span>
+                    </a>
+                    <figcaption class="caption">
+                        <h3 class="title-news"><a href="" class="title-news" title="">PJ Esports Festival by Orange Esports</a></h3>
+                        <p class="info-news"><a href="" title="" class="lnk-org">eSPORTS</a>  -  32 minutes ago</p>
+                        <p class="short-desc">TNC Predator ran through the ESL One Hamburg 2018 SEA qualifiers with an undefeated streak to claim the sole spot for the main event next month</p>
+                    </figcaption>
+                </figure>
+                <figure class="item-news">
+                    <a href="" class="image">
+                        <img src="images/img-news-list.jpg" alt="">
+                        <span class="tag-video"><i class="icon-videocam"></i></span>
+                    </a>
+                    <figcaption class="caption">
+                        <h3 class="title-news"><a href="" class="title-news" title="">PJ Esports Festival by Orange Esports</a></h3>
+                        <p class="info-news"><a href="" title="" class="lnk-org">eSPORTS</a>  -  32 minutes ago</p>
+                        <p class="short-desc">TNC Predator ran through the ESL One Hamburg 2018 SEA qualifiers with an undefeated streak to claim the sole spot for the main event next month</p>
+                    </figcaption>
+                </figure>
+                <figure class="item-news">
+                    <a href="" class="image">
+                        <img src="images/img-news-list.jpg" alt="">
+                        <span class="tag-video"><i class="icon-videocam"></i></span>
+                    </a>
+                    <figcaption class="caption">
+                        <h3 class="title-news"><a href="" class="title-news" title="">PJ Esports Festival by Orange Esports</a></h3>
+                        <p class="info-news"><a href="" title="" class="lnk-org">eSPORTS</a>  -  32 minutes ago</p>
+                        <p class="short-desc">TNC Predator ran through the ESL One Hamburg 2018 SEA qualifiers with an undefeated streak to claim the sole spot for the main event next month</p>
+                    </figcaption>
+                </figure>
+                <figure class="item-news">
+                    <a href="" class="image">
+                        <img src="images/img-news-list.jpg" alt="">
+                        <span class="tag-video"><i class="icon-videocam"></i></span>
+                    </a>
+                    <figcaption class="caption">
+                        <h3 class="title-news"><a href="" class="title-news" title="">PJ Esports Festival by Orange Esports</a></h3>
+                        <p class="info-news"><a href="" title="" class="lnk-org">eSPORTS</a>  -  32 minutes ago</p>
+                        <p class="short-desc">TNC Predator ran through the ESL One Hamburg 2018 SEA qualifiers with an undefeated streak to claim the sole spot for the main event next month</p>
+                    </figcaption>
+                </figure>
+                <figure class="item-news">
+                    <a href="" class="image">
+                        <img src="images/img-news-list.jpg" alt="">
+                        <span class="tag-video"><i class="icon-videocam"></i></span>
+                    </a>
+                    <figcaption class="caption">
+                        <h3 class="title-news"><a href="" class="title-news" title="">PJ Esports Festival by Orange Esports</a></h3>
+                        <p class="info-news"><a href="" title="" class="lnk-org">eSPORTS</a>  -  32 minutes ago</p>
+                        <p class="short-desc">TNC Predator ran through the ESL One Hamburg 2018 SEA qualifiers with an undefeated streak to claim the sole spot for the main event next month</p>
+                    </figcaption>
+                </figure>
+                <figure class="item-news n-bd">
+                    <a href="" class="image">
+                        <img src="images/img-news-list.jpg" alt="">
+                        <span class="tag-video"><i class="icon-videocam"></i></span>
+                    </a>
+                    <figcaption class="caption">
+                        <h3 class="title-news"><a href="" class="title-news" title="">PJ Esports Festival by Orange Esports</a></h3>
+                        <p class="info-news"><a href="" title="" class="lnk-org">eSPORTS</a>  -  32 minutes ago</p>
+                        <p class="short-desc">TNC Predator ran through the ESL One Hamburg 2018 SEA qualifiers with an undefeated streak to claim the sole spot for the main event next month</p>
+                    </figcaption>
+                </figure>#}
+                {% if loadMoreToken is not null %}
+                <div id="loading-panel" class="wrapper hidden">
+                    <div class="wrapper-cell">
+                        <div class="image animated-background"></div>
+                        <div class="text">
+                            <div class="text-title animated-background"></div>
+                            <div class="text-title animated-background"></div>
+                            <div class="text-title animated-background"></div>
+                            <div class="text-title animated-background"></div>
+                            <div class="text-title animated-background"></div>
+                            <div class="text-title animated-background"></div>
+                            <div class="text-title animated-background"></div>
+                        </div>
+                    </div>
+                </div>
+                <a id="btn-load-more" href="javascript:void(0)" class="btn-seemore hidden" rel="nofollow" data-url="{{ path('ajax_post_home_stream') }}" data-token="{{ loadMoreToken }}">See more</a>
+                {% endif %}
+            </div>
+            {{ include('default/widgets/home-hot-videos.html.twig') }}
+        </div>
+    </section>
+{% endblock %}

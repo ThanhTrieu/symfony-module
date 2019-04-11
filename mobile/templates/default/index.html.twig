@@ -1,0 +1,119 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if featuredPosts | length  %}
+    <section class="pdb-10">
+        <figure class="news-hot-big">
+            <a href="{{ featuredPosts.topFeaturedPost.url }}" class="image" title="{{ featuredPosts.topFeaturedPost.titleHot }}">
+                <img src="{{ featuredPosts.topFeaturedPost.avatar }}" alt="{{ featuredPosts.topFeaturedPost.titleHot }}">
+            </a>
+            <figcaption class="caption">
+                <h1 class="title-big">
+                    <a href="{{ featuredPosts.topFeaturedPost.url }}" title="{{ featuredPosts.topFeaturedPost.titleHot }}">
+                        {{ featuredPosts.topFeaturedPost.title_mobile|raw }}
+                    </a>
+                </h1>
+                <p class="s-desc">{{ featuredPosts.topFeaturedPost.sapo|raw }}</p>
+            </figcaption>
+        </figure>
+        <div class="hot-news-items">
+        <ul class="container list-news-thumb">
+            {% for post in featuredPosts.otherFeaturedPosts %}
+                {% if loop.first %}
+                    <li class="item-col-news">
+                        <a href="{{ post.url }}" class="image" title="{{ post.titleHot }}">
+                            <img src="{{ post.avatar }}" alt="{{ post.titleHot }}">
+                        </a>
+                        <a href="{{ post.cate_url }}" class="tag-news" title="{{ post.cate_name }}">{{ post.cate_name }}</a>
+                        <h2 class="title-news">
+                            <a href="{{ post.url }}" title="{{ post.titleHot }}">{{ post.title_mobile }}</a>
+                        </h2>
+                    </li>
+                {% else %}
+                    <li class="item-col-news last">
+                        <a href="{{ post.url }}" class="image" title="{{ post.titleHot }}">
+                            <img src="{{ post.avatar }}" alt="{{ post.titleHot }}">
+                        </a>
+                        <a href="{{ post.cate_url }}" class="tag-news" title="{{ post.cate_name }}">{{ post.cate_name }}</a>
+                        <h2 class="title-news">
+                            <a href="{{ post.url }}" title="{{ post.titleHot }}">{{ post.title_mobile }}</a>
+                        </h2>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        </div>
+    </section>
+    {% endif %}
+    <section class="sl-game">
+        <div class="container">
+            <h3 class="title-box">TOP GAMES<s></s></h3>
+            <div class="content-sl">
+                <ul class="slider-game" id="content-slider">
+                    {% for item in gameTags %}
+                    <li id="tag-{{ item.tag_id }}" class="item-game">
+                        <a href="{{ item.url }}" class="image" title="{{ item.name }}">
+                            <img src="{{ item.avatar }}" alt="{{ item.name }}">
+                        </a>
+                        <a class="tag-game" title="{{ item.other_tags }}">{{ item.other_tags }}</a>
+                        <h3 class="title-link"><a href="{{ item.url }}" title="{{ item.name }}">{{ item.name }}</a></h3>
+                        <span class="num">{{ item.points }}</span>
+                        <p class="vote">
+                            {#<i class="icon-star"></i>#}
+                            {#<i class="icon-star"></i>#}
+                            {#<i class="icon-star"></i>#}
+                            {#<i class="icon-star"></i>#}
+                            {#<i class="icon-star-empty"></i>#}
+                            <i class="icon-newspaper"></i>{{ item.post_count }}
+                        </p>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {#<a href="" class="next"><i class="icon-right-open-big"></i></a>#}
+                {#<a href="" class="back"><i class="icon-left-open-big"></i></a>#}
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <h3 class="title-box">recent<s></s></h3>
+        </div>
+        {% include 'default/widgets/home-stream-posts.html.twig' with {'homeStreamPosts': firstHomeStreamPosts, 'featuredStory': firstFeaturedStory, 'positionInject': positionInject} %}
+    </section>
+    <section class="box-trending">
+        <div class="container">
+            <div class="sl-big-game">
+                <ul class="sl-big">
+                    {% for key,item in trendingStories %}
+                    <li class="item-sl">
+                        <span class="cap-game">TRENDING STORIES</span>
+                        <a href="{{ item.url }}" class="image" title="{{ item.title }}">
+                            <img src="{{ item.avatar }}" alt="{{ item.title }}">
+                        </a>
+                        <a href="{{ item.url }}" class="title-sl" title="{{ item.title }}">{{ item.title|raw }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div id="pnlStreamPosts">
+            {% include 'default/widgets/home-stream-posts.html.twig' with {'homeStreamPosts': secondHomeStreamPosts, 'featuredStory': secondFeaturedStory, 'positionInject': positionInject} %}
+            {% if loadMoreToken is not null %}
+                <div id="loading-panel" class="home-wapper wrapper hidden">
+                    <div class="text-title animated-background"></div>
+                    <div class="wrapper-cell">
+                        <div class="image animated-background"></div>
+                        <div class="text">
+                            <div class="text-title animated-background"></div>
+                            <div class="text-title animated-background"></div>
+                            <div class="text-title animated-background"></div>
+                        </div>
+                    </div>
+                </div>
+                <a id="btn-load-more" href="javascript:void(0)" class="btn-seemore seemore hidden" rel="nofollow" data-url="{{ path('ajax_post_home_stream') }}" data-token="{{ loadMoreToken }}">See more</a>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}

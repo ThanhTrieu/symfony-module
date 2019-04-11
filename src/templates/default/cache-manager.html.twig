@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+    <title>{{ seo.title }} - {{ site_name }}</title>
+<body>
+<article class="pg-static">
+    <div class="container txt-center">
+        {% if form == 2 %}
+            <form class="form-login" action="{{ url }}" method="POST">
+                <h4 class="title-404">login</h4>
+                <div class="form-username">
+                    <input class="input-pass" type="text" name="username" value="" placeholder="Username">
+                </div>
+                <div class="form-pass">
+                    <input class="input-pass" type="password" name="password" value="" placeholder="password">
+                </div>
+                <button class="" type="submit">Login</button>
+            </form>
+        {% else %}
+            <h4 class="title-404">{{ content }}</h4>
+            <form class="form-layout" action="{{ url }}" method="POST">
+                <h4 class="title-404">Clear Cache layout</h4>
+                <select name="env">
+                    <option value="dev">dev</option>
+                    <option value="prod">prod</option>
+                </select>
+                <button class="" type="submit">Clear Cache</button>
+                <input type="hidden" value="1" name="no-warmup">
+                <input type="hidden" value="0" name="type">
+                <input type="hidden" value="1" name="check-clear-cache">
+            </form>
+
+            <form class="form-data" action="{{ url }}" method="POST">
+                <h4 class="title-404">Clear Cache Data && Pages</h4>
+                <select name="type_cache">
+                    <option value="1">Pages</option>
+                    <option value="2">Data</option>
+                </select>
+                <button class="" type="submit">Clear Cache</button>
+                <input type="hidden" value="1" name="type">
+            </form>
+        {% endif %}
+    </div>
+</article>
+</body>
+</html>

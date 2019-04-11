@@ -1,0 +1,20 @@
+<ul class="list-news-thumb mobile-video">
+    {% for key,item in listItemVideo %}
+        <li class="item-col-news list-video-mobile {{ (key+1)%2==1? 'clear':'' }} {{(loop.last) ? 'last' : '' }}">
+            <a href="{{ item.url }}" class="image" title="{{ item.title }}" data-url="{{ item.url }}" rel="{{ item.source_video }}">
+                <img src="{{ item.avatar }}" alt="{{ item.title }}">
+            </a>
+            <span class="tag-video"><i class="icon-videocam"></i></span>
+            <h2 class="title-news">
+                <a href="{{ item.url }}" title="{{ item.title }}" data-url="{{ item.url }}" rel="{{ item.source_video }}" data-img="{{ item.avatar }}">
+                    {{ item.title|raw }}
+                </a>
+            </h2>
+        </li>
+    {% endfor %}
+</ul>
+{#{% if ajax %}#}
+    {#{% block javascripts %}#}
+        {#<script type="text/javascript" src="/js/video.js"></script>#}
+    {#{% endblock %}#}
+{#{% endif %}#}

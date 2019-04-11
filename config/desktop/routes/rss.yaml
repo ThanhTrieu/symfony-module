@@ -1,0 +1,40 @@
+rss:
+    path:     /{map}
+    defaults: {_controller: App\Controller\RssController::rss}
+    requirements:
+             map: "(rss|feed)"
+rss_tag:
+    path:     /{tagSlug}/feed.html
+    defaults: {_controller: App\Controller\RssController::tagsRss}
+    requirements:
+        tagSlug: "[a-z0-9\\-]+"
+
+rss_detail_news:
+    path:     /{cateSlug}/{slug}-{postId}/feed
+    defaults: {_controller: App\Controller\RssController::detailFeed}
+    requirements:
+        cateSlug: "[a-z0-9\\-]+"
+        slug: "[a-z0-9\\-‘’%]+"
+        postId: "\\d+"
+    options:
+        utf8: true
+rss_category:
+    path:     /{cateSlug}/feed
+    defaults: {_controller: App\Controller\RssController::cateRss}
+    requirements:
+        cateSlug: "[a-z0-9\\-]+"
+
+rss_sub_cate:
+    path:     /{parentSlug}/{cateSlug}/feed
+    defaults: {_controller: App\Controller\RssController::cateRss}
+    requirements:
+        parentSlug: "[a-z0-9\\-]+"
+        cateSlug: "[a-z0-9\\-]+"
+
+rss_sub_cate_level2:
+    path:     /{rootSlug}/{parentSlug}/{cateSlug}/feed
+    defaults: {_controller: App\Controller\RssController::cateRss}
+    requirements:
+        rootSlug: "[a-z0-9\\-]+"
+        parentSlug: "[a-z0-9\\-]+"
+        cateSlug: "[a-z0-9\\-]+"

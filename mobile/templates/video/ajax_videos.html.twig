@@ -1,0 +1,3 @@
+{% if listBottomVideos|length %}
+    {% include 'video/widgets/list-video-item.html.twig' with {'listItemVideo': listBottomVideos, 'ajax': 1} only %}
+{% endif %}

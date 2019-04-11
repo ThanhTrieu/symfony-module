@@ -1,0 +1,127 @@
+{% if gameTags %}
+<div class="box-top">
+    <h2 class="title-box">Top game</h2>
+    {% for item in gameTags %}
+        <figure id="tag-{{ item.tag_id }}" class="item-news-left">
+            <a href="{{ item.url }}" class="image" title="{{ item.name }}">
+                <img src="{{ item.avatar }}" alt="{{ item.name }}">
+                <span class="num">{{ item.points }}</span>
+            </a>
+            <figcaption class="caption">
+                <p class="info-news "><span class="lnk-org">{{ item.other_tags }}</span></p>
+                <h3 class="title-news"><a href="{{ item.url }}" title="{{ item.name }}">{{ item.name }}</a></h3>
+                <ul>
+                    {#<li>
+                        <i class="icon-star org-cl"></i>
+                        <i class="icon-star org-cl"></i>
+                        <i class="icon-star org-cl"></i>
+                        <i class="icon-star-empty"></i>
+                        <i class="icon-star-empty"></i>
+                    </li>#}
+                    <li class="txt-r flr"><i class="icon-newspaper"></i>{{ item.post_count }}</li>
+                </ul>
+            </figcaption>
+        </figure>
+    {% endfor %}
+    {#<figure class="item-news-left">
+        <a href="" class="image">
+            <img src="images/img-news-list.jpg" alt="">
+            <span class="num">01</span>
+        </a>
+        <figcaption class="caption">
+            <p class="info-news "><a href="" title="" class="lnk-org">Mobile Games</a></p>
+            <h3 class="title-news"><a href="" title="">PUBG Mobile</a></h3>
+            <ul>
+                <li>
+                    <i class="icon-star org-cl"></i>
+                    <i class="icon-star org-cl"></i>
+                    <i class="icon-star org-cl"></i>
+                    <i class="icon-star-empty"></i>
+                    <i class="icon-star-empty"></i>
+                </li>
+                <li class="txt-r"><i class="icon-newspaper"></i>1.242</li>
+            </ul>
+        </figcaption>
+    </figure>
+    <figure class="item-news-left">
+        <a href="" class="image">
+            <img src="images/img-news-list.jpg" alt="">
+            <span class="num">02</span>
+        </a>
+        <figcaption class="caption">
+            <p class="info-news "><a href="" title="" class="lnk-org">Mobile Games</a></p>
+            <h3 class="title-news"><a href="" title="">PUBG Mobile</a></h3>
+            <ul>
+                <li>
+                    <i class="icon-star org-cl"></i>
+                    <i class="icon-star org-cl"></i>
+                    <i class="icon-star org-cl"></i>
+                    <i class="icon-star-empty"></i>
+                    <i class="icon-star-empty"></i>
+                </li>
+                <li class="txt-r"><i class="icon-newspaper"></i>1.242</li>
+            </ul>
+        </figcaption>
+    </figure>
+    <figure class="item-news-left">
+        <a href="" class="image">
+            <img src="images/img-news-list.jpg" alt="">
+            <span class="num">03</span>
+        </a>
+        <figcaption class="caption">
+            <p class="info-news "><a href="" title="" class="lnk-org">Mobile Games</a></p>
+            <h3 class="title-news"><a href="" title="">PUBG Mobile</a></h3>
+            <ul>
+                <li>
+                    <i class="icon-star org-cl"></i>
+                    <i class="icon-star org-cl"></i>
+                    <i class="icon-star org-cl"></i>
+                    <i class="icon-star-empty"></i>
+                    <i class="icon-star-empty"></i>
+                </li>
+                <li class="txt-r"><i class="icon-newspaper"></i>1.242</li>
+            </ul>
+        </figcaption>
+    </figure>
+    <figure class="item-news-left">
+        <a href="" class="image">
+            <img src="images/img-news-list.jpg" alt="">
+            <span class="num">04</span>
+        </a>
+        <figcaption class="caption">
+            <p class="info-news "><a href="" title="" class="lnk-org">Mobile Games</a></p>
+            <h3 class="title-news"><a href="" title="">PUBG Mobile</a></h3>
+            <ul>
+                <li>
+                    <i class="icon-star org-cl"></i>
+                    <i class="icon-star org-cl"></i>
+                    <i class="icon-star org-cl"></i>
+                    <i class="icon-star-empty"></i>
+                    <i class="icon-star-empty"></i>
+                </li>
+                <li class="txt-r"><i class="icon-newspaper"></i>1.242</li>
+            </ul>
+        </figcaption>
+    </figure>
+    <figure class="item-news-left">
+        <a href="" class="image">
+            <img src="images/img-news-list.jpg" alt="">
+            <span class="num">05</span>
+        </a>
+        <figcaption class="caption">
+            <p class="info-news "><a href="" title="" class="lnk-org">Mobile Games</a></p>
+            <h3 class="title-news"><a href="" title="">PUBG Mobile</a></h3>
+            <ul>
+                <li>
+                    <i class="icon-star org-cl"></i>
+                    <i class="icon-star org-cl"></i>
+                    <i class="icon-star org-cl"></i>
+                    <i class="icon-star-empty"></i>
+                    <i class="icon-star-empty"></i>
+                </li>
+                <li class="txt-r"><i class="icon-newspaper"></i>1.242</li>
+            </ul>
+        </figcaption>
+    </figure>#}
+</div>
+{% endif %}

@@ -1,0 +1,151 @@
+.title-news-item, .title-news-item a{
+	font-weight: bold;
+}
+.top-head ul > li a.fb, .top-head ul > li a.gg, .top-head ul > li a.tw {
+	display: block;
+    width: 34px;
+    height: 34px;
+    color: #fff;
+    text-align: center;
+    line-height: 34px;
+    margin-left: 8px;
+    font-size: 15px;
+    vertical-align: middle;
+    float: left;
+    background: #4267b2; 
+}
+.top-head ul > li a.fb{
+	margin-left: 186px;
+}
+.top-head ul > li a.gg {
+  background: #ee4433; }
+.top-head ul > li a.tw {
+  background: #32ccfe; }
+      .top-head ul > li .icon-facebook-circled {
+        color: #4267b2; }
+      .top-head ul > li .fr-search {
+        float: right;
+        margin-left: 10px;
+        width: 270px;
+        height: 34px;
+        position: relative; }
+        .top-head ul > li .fr-search .inp {
+          width: 236px;
+          height: 34px;
+          padding: 10px;
+          font-size: 13px;
+          color: #999;
+          border: 1px solid #c5c5c5;
+          border-right: 0;
+          background: transparent;
+          display: block;
+          }
+          
+        .top-head ul > li .fr-search .search {
+          background: #ff6000;
+          border: none;
+          position: absolute;
+          right: 0px;
+          bottom: 0px;
+          font-size: 20px;
+          color: #fff;
+          cursor: pointer;
+          display: block;
+          width: 34px;
+          height: 35px; }
+.hot-news-thumb .news-thumb{
+  margin-left: 0;
+  margin-right: 30px;
+}
+.hot-news-thumb .news-thumb.last{
+  margin-left: 0;
+  margin-right: 0px;
+}
+footer {   
+    background: url(../images/bg-ft.jpg)  no-repeat;
+    background-size: 100%;
+}
+.item-news-left .num{
+  width: 39px;
+  height: 31px;
+  background: url(../images/bg-num.png)  no-repeat;
+    background-size: 100%;
+}
+.hot-news-thumb .news-thumb .btn-red{
+  width: 125px;
+  height: 25px;
+  background: url(../images/bg-tag.png)  no-repeat;
+    background-size: 100%;
+    display: block;
+}
+.tag-video{
+  width: 36px;
+  height: 36px;
+  background: url(../images/bg-ic-vd.png)  no-repeat;
+    background-size: 100%;
+}
+.item-news-big .btn-tag{
+  width: 196px;
+  height: 30px;
+  background: url(../images/bg-tag1.png)  no-repeat;
+    background-size: 100%;
+}
+.item-news-big .caption{
+  filter: progid:DXImageTransform.Microsoft.gradient( gradientType=0, startColor=0, endColorStr=#000 );
+    -ms-filter: progid:DXImageTransform.Microsoft.gradient( gradientType=0, startColor=0, endColoStr=#000 );
+  height: 245px;
+}
+.hot-news-thumb .news-thumb .caption{
+  filter: progid:DXImageTransform.Microsoft.gradient( gradientType=0, startColor=0, endColorStr=#000 );
+    -ms-filter: progid:DXImageTransform.Microsoft.gradient( gradientType=0, startColor=0, endColoStr=#000 );
+}
+footer .w470 ul li{
+  float: left;
+  display: block;
+  width: 235px;
+}
+footer .onl-sp {
+    display: block;
+    width: 208px;
+    height: 34px;
+    padding-top: 10px;
+    position: relative;
+}
+footer .onl-sp .icon-sk, footer .onl-sp .icon-msg{
+  display: block;
+  width: 22px;
+  height: 22px;
+  float: left;
+  position: absolute;
+  top: 6px;
+  right: 10px;
+}
+footer .onl-sp .icon-sk{
+  margin-left: 142px;
+  right: 40px;
+}
+
+footer .onl-sp .icon-msg{
+  clear: right;
+}
+.specical .item-news-big .caption{
+  filter: none;
+}
+footer .logo{
+  background: url(../images/logo-f.png) no-repeat;
+  background-size: cover;
+}
+.inner-list .item-news .caption{
+  width: 160px;
+}
+.specical .item-news-big .play{
+    background: url(../images/play.png);
+    text-align: center;
+    line-height: 0px;
+    color: transparent;
+    position: absolute;
+    display: block;
+    top: 200px;
+    left: 335px;
+
+}

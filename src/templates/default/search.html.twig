@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <section class="game-list">
+        <div class="container pdt-15">
+            <div class="col-big mgr-30">
+                <div class="pdb-10">
+                    <h1 class="title-result" style="max-width: 770px; word-break: break-word;"><s>Search:</s>  {{ keyword|raw }}</h1>
+                    <span class="txt-result"><b>{{ totalPosts|default(0) }}</b> results found</span>
+                </div>
+                <div id="pnlStreamPosts">
+                    {% include 'category/widgets/contents.html.twig' with {'postList': posts} only %}
+                    {% if loadMoreToken is not null %}
+                        <div id="loading-panel" class="wrapper hidden">
+                            <div class="wrapper-cell">
+                                <div class="image animated-background"></div>
+                                <div class="text">
+                                    <div class="text-title animated-background"></div>
+                                    <div class="text-title animated-background"></div>
+                                    <div class="text-title animated-background"></div>
+                                    <div class="text-title animated-background"></div>
+                                    <div class="text-title animated-background"></div>
+                                    <div class="text-title animated-background"></div>
+                                    <div class="text-title animated-background"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <a id="btn-load-more" href="javascript:void(0)" class="btn-seemore hidden" rel="nofollow" data-url="{{ path('ajax_get_search_posts') }}" data-token="{{ loadMoreToken }}">See more</a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-sm">
+                {{ include('common/featured-stories.html.twig', {'featuredStories': featuredStories, 'type': 1}) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}

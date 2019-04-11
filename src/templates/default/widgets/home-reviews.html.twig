@@ -1,0 +1,127 @@
+{% if reviewPosts %}
+<div class="box-news-sm review-box">
+    <h2 class="title-box">Reviews <a href="{{ path('cate', {'cateSlug': 'reviews'}) }}"  title="" class="Seemore">See more</a></h2>
+    {% for item in reviewPosts %}
+    <figure class="item-news-left" alt="{{ item.title }}">
+        <a href="{{ item.url }}" class="image">
+            <img src="{{ item.avatar }}" alt="{{ item.title }}">
+            <span class="num">{{ item.review_points }}</span>
+        </a>
+        <figcaption class="caption">
+            <p class="info-news "><span class="lnk-org">{{ item.other_tags }}</span></p>
+            <h3 class="title-news trim-words"><a href="{{ item.url }}" title="{{ item.title }}">{{ item.title }}</a></h3>
+        </figcaption>
+    </figure>
+    {% endfor %}
+    {#    <figure class="item-news-left">
+            <a href="" class="image">
+                <img src="images/news-thumb-sm.jpg" alt="">
+                <span class="num">9.5</span>
+            </a>
+            <figcaption class="caption">
+                <p class="info-news "><a href="" title="" class="lnk-org">PC Online Games</a></p>
+                <h3 class="title-news"><a href="" title="">League of Legends Liên minh huyền thoại</a></h3>
+
+            </figcaption>
+        </figure>
+        <figure class="item-news-left">
+            <a href="" class="image">
+                <img src="images/news-thumb-sm.jpg" alt="">
+                <span class="num">8.5</span>
+            </a>
+            <figcaption class="caption">
+                <p class="info-news "><a href="" title="" class="lnk-org">PC Online Games</a></p>
+                <h3 class="title-news"><a href="" title="">League of Legends Liên minh huyền thoại</a></h3>
+
+            </figcaption>
+        </figure>
+        <figure class="item-news-left">
+            <a href="" class="image">
+                <img src="images/news-thumb-sm.jpg" alt="">
+                <span class="num">9.5</span>
+            </a>
+            <figcaption class="caption">
+                <p class="info-news "><a href="" title="" class="lnk-org">PC Online Games</a></p>
+                <h3 class="title-news"><a href="" title="">League of Legends Liên minh huyền thoại</a></h3>
+
+            </figcaption>
+        </figure>
+        <figure class="item-news-left">
+            <a href="" class="image">
+                <img src="images/news-thumb-sm.jpg" alt="">
+                <span class="num">8.5</span>
+            </a>
+            <figcaption class="caption">
+                <p class="info-news "><a href="" title="" class="lnk-org">PC Online Games</a></p>
+                <h3 class="title-news"><a href="" title="">League of Legends Liên minh huyền thoại</a></h3>
+
+            </figcaption>
+        </figure>
+        <figure class="item-news-left">
+            <a href="" class="image">
+                <img src="images/news-thumb-sm.jpg" alt="">
+                <span class="num">9.5</span>
+            </a>
+            <figcaption class="caption">
+                <p class="info-news "><a href="" title="" class="lnk-org">PC Online Games</a></p>
+                <h3 class="title-news"><a href="" title="">League of Legends Liên minh huyền thoại</a></h3>
+
+            </figcaption>
+        </figure>
+        <figure class="item-news-left">
+            <a href="" class="image">
+                <img src="images/news-thumb-sm.jpg" alt="">
+                <span class="num">8.5</span>
+            </a>
+            <figcaption class="caption">
+                <p class="info-news "><a href="" title="" class="lnk-org">PC Online Games</a></p>
+                <h3 class="title-news"><a href="" title="">League of Legends Liên minh huyền thoại</a></h3>
+
+            </figcaption>
+        </figure>
+        <figure class="item-news-left">
+            <a href="" class="image">
+                <img src="images/news-thumb-sm.jpg" alt="">
+                <span class="num">9.5</span>
+            </a>
+            <figcaption class="caption">
+                <p class="info-news "><a href="" title="" class="lnk-org">PC Online Games</a></p>
+                <h3 class="title-news"><a href="" title="">League of Legends Liên minh huyền thoại</a></h3>
+
+            </figcaption>
+        </figure>
+        <figure class="item-news-left">
+            <a href="" class="image">
+                <img src="images/news-thumb-sm.jpg" alt="">
+                <span class="num">8.5</span>
+            </a>
+            <figcaption class="caption">
+                <p class="info-news "><a href="" title="" class="lnk-org">PC Online Games</a></p>
+                <h3 class="title-news"><a href="" title="">League of Legends Liên minh huyền thoại</a></h3>
+
+            </figcaption>
+        </figure>
+        <figure class="item-news-left">
+            <a href="" class="image">
+                <img src="images/news-thumb-sm.jpg" alt="">
+                <span class="num">9.5</span>
+            </a>
+            <figcaption class="caption">
+                <p class="info-news "><a href="" title="" class="lnk-org">PC Online Games</a></p>
+                <h3 class="title-news"><a href="" title="">League of Legends Liên minh huyền thoại</a></h3>
+
+            </figcaption>
+        </figure>
+        <figure class="item-news-left">
+            <a href="" class="image">
+                <img src="images/news-thumb-sm.jpg" alt="">
+                <span class="num">8.5</span>
+            </a>
+            <figcaption class="caption">
+                <p class="info-news "><a href="" title="" class="lnk-org">PC Online Games</a></p>
+                <h3 class="title-news"><a href="" title="">League of Legends Liên minh huyền thoại</a></h3>
+
+            </figcaption>
+        </figure>#}
+</div>
+{% endif %}

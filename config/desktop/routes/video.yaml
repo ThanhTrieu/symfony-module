@@ -1,0 +1,12 @@
+video_detail:
+    path:  /video/{videoSlug}-{videoId}
+    defaults: {_controller: App\Controller\Video\IndexController::videoDetail}
+    requirements:
+        videoSlug: "[a-z0-9\\-]+"
+        videoId: "\\d+"
+video_ajax:
+    path:  /ajax/video.json
+    defaults: {_controller: App\Controller\Video\AjaxController::index}
+video:
+    path:     /video
+    defaults: {_controller: App\Controller\Video\IndexController::videoList}

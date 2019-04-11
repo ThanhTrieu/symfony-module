@@ -1,0 +1,23 @@
+{% if postList is defined %}
+    <ul class="list-news">
+        {% for key, item in postList %}
+            <li class="item-news">
+                <h3 class="title-news">
+                    <a href="{{ item.url }}" title="{{ item.title }}">{{ item.title }}</a>
+                </h3>
+                <a href="{{ item.url }}" class="image" title="{{ item.title }}">
+                    <img src="{{ item.avatar }}" alt="{{ item.title }}">
+                </a>
+                <p class="caption">
+                    <span class="txt-info">
+                        <a href="{{ item.cate_url }}" class="cl-org" title="{{ item.cate_name }}">
+                        {{ item.cate_name }}
+                        </a>
+                        - <span class="time-ago" title="{{ item.publish_time_ago }}">{{ item.s_publish_time }}</span>
+                    </span>
+                    {{ item.sapo }}
+                </p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}

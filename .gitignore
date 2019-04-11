@@ -1,0 +1,44 @@
+###> symfony/framework-bundle ###
+/.env.local
+/.env.*.local
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> symfony/web-server-bundle ###
+/.web-server-pid
+###< symfony/web-server-bundle ###
+/docker-compose.yml
+
+###> squizlabs/php_codesniffer ###
+/.phpcs-cache
+/phpcs.xml
+###< squizlabs/php_codesniffer ###
+/config/services_prod.yaml
+
+vendor/
+bin/
+composer.lock
+
+.idea/
+*.sublime-*
+symfony\.lock
+
+docker/logs/nginx_access\.log
+
+public/index\.php
+
+templates/base\.html\.twig
+
+docker/logs/*.log
+
+config/bootstrap\.php
+
+\.env
+/.env

@@ -1,0 +1,198 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <article class="pdt-20">
+        <div class="container">
+            <h1 class="title">{{ post.title }}</h1>
+            <p class="info">{{ post.authorName }} - {{ post.s_publish_time }}<s>|</s><a href="{{ post.cate_url }}"
+                                                                                        class="tag-g">{{ post.cate_name }}</a>
+            </p>
+            <hr/>
+            <div class="sapo">{{ post.sapo }}</div>
+            {% if( relatedPosts|length > 0 ) %}
+                <ul class="more-lnk">
+                    {% for post in relatedPosts %}
+                        <li><a href="{{ post.url }}"><i class="icon-angle-right"></i><span>{{ post.title }}</span></a>
+                        </li>
+                    {% endfor %}
+                    {#<li><a href=""><i class="icon-angle-right"></i><span>Netflix criticizes EU over ‘content quota’</span></a></li>
+                    <li><a href=""><i class="icon-angle-right"></i><span>FCC chairman criticizes US carriers for ‘unacceptable’ progress after Hurricane Michael</span></a></li>
+                    <li><a href="" class="active"><i class="icon-angle-right"></i><span>How to pick the Microsoft Surface that’s right for you</span></a></li>#}
+                </ul>
+            {% endif %}
+            <div class="desciption">
+                {{ post.contentMobile|raw }}
+                {#<p class="pdb-15">Alex Stamos, Facebook’s ex-chief security officer, thinks his former home at the heart of Silicon Valley is ill equipped to address the world’s most pressing digital problems, namely security, user privacy, and the protection of democratic institutions. To address this, and perhaps help ease the tensions between Washington and the tech industry while pulling in more academic and research experts, Stamos is launching a new institute he’s calling the Stanford Internet Observatory.</p>
+                <p class="pdb-15 txt-center"><img src="images/detail.jpg" alt=""><span class="cap-img">Netflix criticizes EU over ‘content quota’</span></p>
+                <p class="pdb-15">The former exec, who left Facebook for the world of academia in August and has earned a reputation for being outspoken and frank about the issues facing the industry, plans to formally announce the institute later today with a speech at Stanford. News of Stamos’ plans was first reported earlier today by The Washington Post.
+                </p>
+                <p class="pdb-15">
+                    “There aren’t processes to thoughtfully think through these trade-offs,” Stamos told The Post in an interview ahead of his planned speech, which is set to take place later today at Stanford’s Center for International Security and Cooperation. “You end up with these for-profit, very powerful organizations that are not democratically accountable, making decisions that are in their best and often short-term interest … without there being a much more open and democratic discussion of what these issues are.”
+                </p><p class="pdb-15">
+                    The former exec, who left Facebook for the world of academia in August and has earned a reputation for being outspoken and frank about the issues facing the industry, plans to formally announce the institute later today with a speech at Stanford. News of Stamos’ plans was first reported earlier today by The Washington Post.
+                </p><p class="pdb-15">
+                    “There aren’t processes to thoughtfully think through these trade-offs,” Stamos told The Post in an interview ahead of his planned speech, which is set to take place later today at Stanford’s Center for International Security and Cooperation. “You end up with these for-profit, very powerful organizations that are not democratically accountable, making decisions that are in their best and often short-term interest … without there being a much more open and democratic discussion of what these issues are.”</p>#}
+            </div>
+            <div class="box-bg">
+                {#<a href="" class="btn-like"><img src="images/btn-like.jpg" alt=""></a>
+                <a href="" class="btn-like-g"><img src="images/btn-glike.jpg" alt=""></a>#}
+                <div>
+                    <div class="fb-like share-button" data-href="{{ post.shortLink }}" data-layout="button_count"
+                         data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+                    <div class="fb-share-button share-button" data-href="{{ post.shortLink }}" data-layout="button"
+                         data-size="small"></div>
+                    {#<div class="g-plusone share-button" data-size="tall" data-href=""
+                         data-callback="countLikeGoogle"></div>#}
+                    <div class="clear"></div>
+                </div>
+                {% if( post.tags|length > 0 ) %}
+                <div class="tab-tag tag-detail">
+                    <span class="btn-tag" title="" style="float: left">Tags</span>
+                    <div class="swiper-container">
+                        <ul id="swiper-wrapper">
+                            {#{{ post.tags|raw }}#}
+                            {% for item in post.tags %}
+                                <li class="item"><a href="{{ path('tag',{'tagSlug':item['s']}) }}" title="{{ item['n'] }}" rel="tag">#{{ item['n'] }}</a></li>
+                            {% endfor %}
+                            {#a href="" class="item" title="">#Pubg mobile</a>
+                            <a href="" class="item active" title="">#pew pew</a>
+                            <a href="" class="item" title="">#streamer</a>#}
+                        </ul>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </article>
+
+    <section class="pdb-20">
+        <div class="container">
+            <h3 class="title-box">relate articles<s></s></h3>
+            {% if( relatedArticles|length > 0 ) %}
+                <ul class="list-news related-news">
+                    {% for article in relatedArticles %}
+                        <li class="item-news {% if article == relatedArticles|last %}last{% endif %}">
+                            <h3 class="title-news">
+                                <a href="{{ article.url }}" title="{{ article.title }}">{{ article.title }}</a>
+                            </h3>
+                            <a href="{{ article.url }}" class="image" title="">
+                                <img src="{{ article.avatar }}" alt="{{ article.title }}" /></a>
+                            <p class="caption">
+                            <span class="txt-info">
+                                <a href="{{ article.cate_url }}" class="cl-org">{{ article.cate_name }} </a>-
+                                <span class="time-ago"
+                                      title="{{ article.publish_time_ago }}">{{ article.s_publish_time }}</span>
+                            </span>
+                                {{ article.sapo }}
+                            </p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {#<ul class="list-news">
+                <li class="item-news">
+                    <h3 class="title-news">
+                        <a href="" title="">Meet Shuttle, the company that’s it by building a booking agent for spaceflight</a>
+                    </h3>
+                    <a href="" class="image" title=""><img src="images/news-item.jpg" alt=""></a>
+                    <p class="caption">
+                        <span class="txt-info"><a href="" class="cl-org">Mobile </a>- 35 minutes ago</span>
+                        Lorem ipsum dolor sit et, consetuer  elit adipiscing lorem ipsum
+                    </p>
+                </li>
+                <li class="item-news">
+                    <h3 class="title-news">
+                        <a href="" title="">Meet Shuttle, the company that’s it by building a booking agent for spaceflight</a>
+                    </h3>
+                    <a href="" class="image" title="">
+                        <img src="images/news-item.jpg" alt="">
+                        <span class="tag-video"><i class="icon-videocam"></i></span>
+                    </a>
+
+                    <p class="caption">
+                        <span class="txt-info"><a href="" class="cl-org">Mobile </a>- 35 minutes ago</span>
+                        Lorem ipsum dolor sit et, consetuer  elit adipiscing lorem ipsum
+                    </p>
+                </li>
+                <li class="item-news">
+                    <h3 class="title-news">
+                        <a href="" title="">Meet Shuttle, the company that’s it by building a booking agent for spaceflight</a>
+                    </h3>
+                    <a href="" class="image" title="">
+                        <img src="images/news-item.jpg" alt="">
+                        <span class="tag-video"><i class="icon-videocam"></i></span>
+                    </a>
+                    <p class="caption">
+                        <span class="txt-info"><a href="" class="cl-org">Mobile </a>- 35 minutes ago</span>
+                        Lorem ipsum dolor sit et, consetuer  elit adipiscing lorem ipsum
+                    </p>
+                </li>
+                <li class="item-news">
+                    <h3 class="title-news">
+                        <a href="" title="">Meet Shuttle, the company that’s it by building a booking agent for spaceflight</a>
+                    </h3>
+                    <a href="" class="image" title=""><img src="images/news-item.jpg" alt=""></a>
+                    <p class="caption">
+                        <span class="txt-info"><a href="" class="cl-org">Mobile </a>- 35 minutes ago</span>
+                        Lorem ipsum dolor sit et, consetuer  elit adipiscing lorem ipsum
+                    </p>
+                </li>
+                <li class="item-news">
+                    <h3 class="title-news">
+                        <a href="" title="">Meet Shuttle, the company that’s it by building a booking agent for spaceflight</a>
+                    </h3>
+                    <a href="" class="image" title=""><img src="images/news-item.jpg" alt=""></a>
+                    <p class="caption">
+                        <span class="txt-info"><a href="" class="cl-org">Mobile </a>- 35 minutes ago</span>
+                        Lorem ipsum dolor sit et, consetuer  elit adipiscing lorem ipsum
+                    </p>
+                </li>
+                <li class="item-news last">
+                    <h3 class="title-news">
+                        <a href="" title="">Meet Shuttle, the company that’s it by building a booking agent for spaceflight</a>
+                    </h3>
+                    <a href="" class="image" title="">
+                        <img src="images/news-item.jpg" alt="">
+                        <span class="tag-video"><i class="icon-videocam"></i></span>
+                    </a>
+                    <p class="caption">
+                        <span class="txt-info"><a href="" class="cl-org">Mobile </a>- 35 minutes ago</span>
+                        Lorem ipsum dolor sit et, consetuer  elit adipiscing lorem ipsum
+                    </p>
+                </li>
+            </ul>#}
+            {#<a href="" class="seemore">See more</a>#}
+        </div>
+    </section>
+    <input id="postId" type="hidden" value="{{ postId }}" />
+{% endblock %}
+{% block javascripts %}
+    {#<script>
+        window.___gcfg = {
+            lang: 'en-US',
+            parsetags: 'onload'
+        };
+    </script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>#}
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=1924560867849013";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script>
+        $(function () {
+            var urlShare = $('meta[property="og:url"]').attr("content");
+            if (urlShare) {
+                $('div.g-plusone').attr('data-href', urlShare);
+                $('div.fb-like').attr('data-href', urlShare);
+                $('div.fb-share-button').attr('data-href', urlShare);
+            }
+            /*count view*/
+            countView.update(1,{{ postId }});
+        });
+    </script>
+{% endblock %}

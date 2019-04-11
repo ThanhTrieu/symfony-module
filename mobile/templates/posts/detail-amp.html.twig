@@ -1,0 +1,64 @@
+{% extends 'base-amp.html.twig' %}
+{% block body %}
+    <article>
+        <div class="container">
+            <h1 class="title">{{ post.title }}</h1>
+            <p class="info">{{ post.authorName }} - {{ post.s_publish_time }}<s>|</s><a href="{{ post.cate_url }}" class="tag-g">{{ post.cate_name }}</a></p>
+            <hr/>
+            <h2 class="sapo">{{ post.sapo }}</h2>
+            <ul class="more-lnk">
+                {% for post in relatedPosts %}
+                    <li><a href="{{ post.url }}"><i class="icon-angle-right"></i><span>{{ post.title }}</span></a></li>
+                {% endfor %}
+            </ul>
+            <div class="desciption">
+                {{ post.contentAmp|raw }}
+            </div>
+            <div class="box-bg">
+                <div>
+                    <amp-facebook-like width=60 height=20 layout="fixed" data-layout="button_count" data-href="{{ urlAmp }}">
+                    </amp-facebook-like>
+                    <amp-social-share type="facebook" width="60" height="20" data-param-app_id="{{ facebook_app_id }}" data-param-url="{{ urlAmp }}">
+                    </amp-social-share>
+                    <div class="clear"></div>
+                    {#<amp-social-share type="gplus" width="60" height="20"  data-param-url="{{ urlAmp }}">
+                    </amp-social-share>#}
+                </div>
+                {% if( post.tags|length > 0 ) %}
+                <ul class="tab-tag">
+                    <li class="first-item"><span class="btn-tag" title="">Tags</span></li>
+                        {#{{ post.tags|raw }}#}
+                        {% for item in post.tags %}
+                        <li class="item"><a href="{{ path('tag',{'tagSlug':item['s']}) }}" title="{{ item['n'] }}" rel="tag">#{{ item['n'] }}</a></li>
+                        {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+
+        </div>
+    </article>
+
+    <section  class="pdb-20">
+        <div class="container">
+            <h3 class="title-box">Relate Articles<s></s></h3>
+            {% if( relatedArticles|length > 0 ) %}
+                <ul class="list-news">
+                    {% for article in relatedArticles %}
+                        <li class="item-news {%if article == relatedArticles|last%}last{%endif%}">
+                            <h3 class="title-news">
+                                <a href="{{ article.url }}" title="{{ article.title }}">{{ article.title }}</a>
+                            </h3>
+                            <a href="{{ article.url }}" class="image" title="{{ article.title }}">
+                                <amp-img src="{{ article.avatar }}" alt="{{ article.title }}" width="218" height="143" layout="responsive"></amp-img>
+                            </a>
+                            <p class="caption">
+                                <span class="txt-info"><a href="{{ article.cate_url }}" class="cl-org">{{ article.cate_name }} </a>- {{ article.s_publish_time }}</span>
+                                {{ article.sapo }}
+                            </p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}

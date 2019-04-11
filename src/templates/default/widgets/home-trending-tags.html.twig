@@ -1,0 +1,14 @@
+{% if trendingTags %}
+<ul class="tab-tag home-tag">
+    <li><span class="btn-tag" title="">Hot trending</span></li>
+    {% for item in trendingTags %}
+        <li id="tag-{{ item.tag_id }}"><a href="{{ item.url }}" class="item" title="{{ item.name }}">#{{ item.name }}</a></li>
+    {% endfor %}
+{#        <a href="" class="item" title="">#Pubg mobile</a>
+        <a href="" class="item active" title="">#pew pew</a>
+        <a href="" class="item" title="">#dota2</a>
+        <a href="" class="item" title="">#streamer</a>
+        <a href="" class="item" title="">#LOL</a>
+    </li>#}
+</ul>
+{% endif %}

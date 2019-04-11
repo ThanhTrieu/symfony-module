@@ -1,0 +1,245 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <article>
+        <div class="container">
+            <div class="col-big mgr-30">
+                <h1 class="title">{{ post.title }}</h1>
+                <p class="info-news">{{ post.authorName }} - <span title="{{ post.publish_time_ago }}">{{ post.s_publish_time }}</span>  |  <a href="{{ post.cate_url }}" class="lnk-org" title="{{ post.cate_name }}">{{ post.cate_name }}</a></p>
+                <hr class="line"/>
+                <div class="sapo">{{ post.sapo }}</div>
+                {#<h2 class="sapo">TNC Predator ran through the ESL One Hamburg 2018 SEA qualifiers with an undefeated streak to claim the sole spot for the main event next month TNC Predator ran through the ESL One Hamburg 2018 SEA qualifiers with an undefeated streak to claim the sole spot for the main event next month...</h2>#}
+                {% if( relatedPosts|length > 0 ) %}
+                <ul class="more-lnk">
+                    {% for post in relatedPosts %}
+                        <li><a href="{{ post.url }}"><i class="icon-right-open-1"></i>{{ post.title }}</a></li>
+                    {% endfor %}
+                    {#<li><a href=""><i class="icon-right-open-1"></i>Netflix criticizes EU over ‘content quota’</a></li>
+                    <li><a href=""><i class="icon-right-open-1"></i>FCC chairman criticizes US carriers for ‘unacceptable’ progress after Hurricane Michael</a></li>
+                    <li><a href="" class="active"><i class="icon-right-open-1"></i>How to pick the Microsoft Surface that’s right for you</a></li>#}
+                </ul>
+                {% endif %}
+
+                <div class="desciption">
+                    {{ post.content|raw }}
+                    {#<p class="pdb-25">Alex Stamos, Facebook’s ex-chief security officer, thinks his former home at the heart of Silicon Valley is ill equipped to address the world’s most pressing digital problems, namely security, user privacy, and the protection of democratic institutions. To address this, and perhaps help ease the tensions between Washington and the tech industry while pulling in more academic and research experts, Stamos is launching a new institute he’s calling the Stanford Internet Observatory.</p>
+                    <p class="pdb-15"><img src="images/img-new-dt.jpg" alt=""><span class="cap-img">Netflix criticizes EU over ‘content quota’</span></p>
+                    <p class="pdb-25">The former exec, who left Facebook for the world of academia in August and has earned a reputation for being outspoken and frank about the issues facing the industry, plans to formally announce the institute later today with a speech at Stanford. News of Stamos’ plans was first reported earlier today by The Washington Post.
+                    </p>
+                    <p class="pdb-25">
+                        “There aren’t processes to thoughtfully think through these trade-offs,” Stamos told The Post in an interview ahead of his planned speech, which is set to take place later today at Stanford’s Center for International Security and Cooperation. “You end up with these for-profit, very powerful organizations that are not democratically accountable, making decisions that are in their best and often short-term interest … without there being a much more open and democratic discussion of what these issues are.”
+                    </p><p class="pdb-25">
+                        The former exec, who left Facebook for the world of academia in August and has earned a reputation for being outspoken and frank about the issues facing the industry, plans to formally announce the institute later today with a speech at Stanford. News of Stamos’ plans was first reported earlier today by The Washington Post.
+                    </p><p class="pdb-25">
+                        “There aren’t processes to thoughtfully think through these trade-offs,” Stamos told The Post in an interview ahead of his planned speech, which is set to take place later today at Stanford’s Center for International Security and Cooperation. “You end up with these for-profit, very powerful organizations that are not democratically accountable, making decisions that are in their best and often short-term interest … without there being a much more open and democratic discussion of what these issues are.”</p>#}
+                </div>
+                <div class="box-socical ">
+                    {#<a href=""><img src="images/btn-like.jpg" alt=""></a>#}
+                    {#<a href=""><img src="images/btn-like-g.jpg" alt=""></a>#}
+                    {#<span class="select-right">
+                        <b>100</b> comment <i class="icon-down-dir-1"></i>
+                    </span>#}
+
+                    <div class="fb-like share-button" data-href="{{ post.shortLink }}" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+
+                    <div class="fb-share-button" data-href="{{ post.shortLink }}" data-layout="button" data-size="small"></div>
+
+                    {#<div class="g-plusone" data-size="tall" data-href="{{ post.shortLink }}" data-callback="countLikeGoogle"></div>#}
+                    <div class="clear"></div>
+                </div>
+                {% if( post.tags|length > 0 ) %}
+                <div class="tab-tag tag-detail">
+                    <span class="btn-tag" title="">Tags</span>
+                    <ul class="content-tag">
+                        {% for item in post.tags %}
+                        <li class="item"><a href="{{ path('tag',{'tagSlug':item['s']}) }}" title="{{ item['n'] }}" rel="tag">#{{ item['n'] }}</a></li>
+                        {% endfor %}
+                        {#{{ post.tags|raw }}#}
+                        {#<a href="" class="item" title="">#Pubg mobile</a>
+                        <a href="" class="item active" title="">#pew pew</a>
+                        <a href="" class="item" title="">#dota2</a>
+                        <a href="" class="item" title="">#streamer</a>
+                        <a href="" class="item" title="">#LOL</a>#}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-sm">
+                {% include 'common/featured-stories.html.twig' with {'featuredStories': featuredStories, 'type': 1} only %}
+                {#<div class="box-news-sm pdt-5 n-mg">
+                    <h2 class="title-box">FEATURED STORIES</h2>
+                    {% if( featuredStories|length > 0 ) %}
+                        {% for article in featuredStories %}
+                            <figure class="item-news-left">
+                                <a href="{{ article.url }}" class="image">
+                                    <img src="{{ article.avatar }}" alt="">
+                                </a>
+                                <figcaption class="caption">
+                                    <h3 class="title-news">
+                                        <a href="{{ article.url }}" title="{{ article.title }}">{{ article.title }}</a>
+                                    </h3>
+                                </figcaption>
+                            </figure>
+                        {% endfor %}
+                    {% endif %}
+                    #}{#<figure class="item-news-left">
+                        <a href="" class="image">
+                            <img src="images/news-thumb-sm.jpg" alt="">
+                        </a>
+                        <figcaption class="caption">
+                            <h3 class="title-news"><a href="" title="">Google's first Android phone rivaled the original iPhone like earlier...</a></h3>
+                        </figcaption>
+                    </figure>
+                    <figure class="item-news-left">
+                        <a href="" class="image">
+                            <img src="images/news-thumb-sm.jpg" alt="">
+                        </a>
+                        <figcaption class="caption">
+                            <h3 class="title-news"><a href="" title="">Google's first Android phone rivaled the original iPhone like earlier...</a></h3>
+                        </figcaption>
+                    </figure>
+                    <figure class="item-news-left">
+                        <a href="" class="image">
+                            <img src="images/news-thumb-sm.jpg" alt="">
+                        </a>
+                        <figcaption class="caption">
+                            <h3 class="title-news"><a href="" title="">Google's first Android phone rivaled the original iPhone like earlier...</a></h3>
+                        </figcaption>
+                    </figure>
+                    <figure class="item-news-left">
+                        <a href="" class="image">
+                            <img src="images/news-thumb-sm.jpg" alt="">
+                        </a>
+                        <figcaption class="caption">
+                            <h3 class="title-news"><a href="" title="">Google's first Android phone rivaled the original iPhone like earlier...</a></h3>
+                        </figcaption>
+                    </figure>
+                    <figure class="item-news-left">
+                        <a href="" class="image">
+                            <img src="images/news-thumb-sm.jpg" alt="">
+                        </a>
+                        <figcaption class="caption">
+                            <h3 class="title-news"><a href="" title="">Google's first Android phone rivaled the original iPhone like earlier...</a></h3>
+                        </figcaption>
+                    </figure>
+                    <figure class="item-news-left">
+                        <a href="" class="image">
+                            <img src="images/news-thumb-sm.jpg" alt="">
+                        </a>
+                        <figcaption class="caption">
+                            <h3 class="title-news"><a href="" title="">Google's first Android phone rivaled the original iPhone like earlier...</a></h3>
+                        </figcaption>
+                    </figure>
+                    <figure class="item-news-left">
+                        <a href="" class="image">
+                            <img src="images/news-thumb-sm.jpg" alt="">
+                        </a>
+                        <figcaption class="caption">
+                            <h3 class="title-news"><a href="" title="">Google's first Android phone rivaled the original iPhone like earlier...</a></h3>
+                        </figcaption>
+                    </figure>
+                    <figure class="item-news-left">
+                        <a href="" class="image">
+                            <img src="images/news-thumb-sm.jpg" alt="">
+                        </a>
+                        <figcaption class="caption">
+                            <h3 class="title-news"><a href="" title="">Google's first Android phone rivaled the original iPhone like earlier...</a></h3>
+                        </figcaption>
+                    </figure>
+                    <figure class="item-news-left">
+                        <a href="" class="image">
+                            <img src="images/news-thumb-sm.jpg" alt="">
+                        </a>
+                        <figcaption class="caption">
+                            <h3 class="title-news"><a href="" title="">Google's first Android phone rivaled the original iPhone like earlier...</a></h3>
+                        </figcaption>
+                    </figure>
+                    <figure class="item-news-left">
+                        <a href="" class="image">
+                            <img src="images/news-thumb-sm.jpg" alt="">
+                        </a>
+                        <figcaption class="caption">
+                            <h3 class="title-news"><a href="" title="">Google's first Android phone rivaled the original iPhone like earlier...</a></h3>
+                        </figcaption>
+                    </figure>#}{#
+                </div>#}
+            </div>
+        </div>
+    </article>
+    <section class="box-trending no-bg">
+        <div class="container">
+            <h2 class="title-box">RELATED ARTICLES</h2>
+            {% if( relatedArticles|length > 0 ) %}
+                {% for article in relatedArticles %}
+                    <figure class="item-news-col {%if article == relatedArticles|last%}last{%endif%}">
+                        <a href="{{ article.url }}" class="image">
+                            <img src="{{ article.avatar }}" alt="">
+                        </a>
+                        <figcaption class="caption">
+                            <h3 class="title-news"><a href="{{ article.url }}" title="">{{ article.title }}</a></h3>
+
+                        </figcaption>
+                    </figure>
+                {% endfor %}
+            {% endif %}
+            {#<figure class="item-news-col">
+                <a href="" class="image">
+                    <img src="images/news-col-hot.jpg" alt="">
+                </a>
+                <figcaption class="caption">
+                    <h3 class="title-news"><a href="" title="">StarLadder i-League PUBG Season 2 Participants</a></h3>
+
+                </figcaption>
+            </figure>
+            <figure class="item-news-col">
+                <a href="" class="image">
+                    <img src="images/news-col-hot.jpg" alt="">
+                </a>
+                <figcaption class="caption">
+                    <h3 class="title-news"><a href="" title="">StarLadder i-League PUBG Season 2 Participants</a></h3>
+
+                </figcaption>
+            </figure>
+            <figure class="item-news-col last">
+                <a href="" class="image">
+                    <img src="images/news-col-hot.jpg" alt="">
+                </a>
+                <figcaption class="caption">
+                    <h3 class="title-news"><a href="" title="">StarLadder i-League PUBG Season 2 Participants</a></h3>
+
+                </figcaption>
+            </figure>#}
+        </div>
+    </section>
+    <input id="postId" type="hidden" value="{{ postId }}" />
+{% endblock %}
+{% block js %}
+    {#<script >
+        window.___gcfg = {
+            lang: 'en-US',
+            parsetags: 'onload'
+        };
+    </script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>#}
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=1924560867849013";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    {#<script>
+       $(function () {
+           var urlShare = $('meta[property="og:url"]').attr("content");
+           if(urlShare){
+               $('div.g-plusone').attr('data-href',urlShare);
+               $('div.fb-like').attr('data-href',urlShare);
+               $('div.fb-share-button').attr('data-href',urlShare);
+           }
+           countView.update(1,{{ postId }});
+       });
+    </script>#}
+{% endblock %}

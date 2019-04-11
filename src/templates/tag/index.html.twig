@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <section class="game-list">
+        <div class="container pdt-40">
+            <div id="pnlStreamPosts" class="col-big mgr-30">
+                <ul class="tab-tag">
+                    <li><span class="btn-tag">TAG</span>
+                        <h1 class="fs-22 page-title">{{ tag_name }}</h1>
+                        <span class="right"><b>{{ total_count }}</b> results found</span>
+                    </li>
+                </ul>
+                <div class="clear"></div>
+                {% include 'category/widgets/contents.html.twig' with {'postList': tagPosts} only %}
+                {% if loadMoreToken is not null %}
+                    <div id="loading-panel" class="wrapper hidden">
+                        <div class="wrapper-cell">
+                            <div class="image animated-background"></div>
+                            <div class="text">
+                                <div class="text-title animated-background"></div>
+                                <div class="text-title animated-background"></div>
+                                <div class="text-title animated-background"></div>
+                                <div class="text-title animated-background"></div>
+                                <div class="text-title animated-background"></div>
+                                <div class="text-title animated-background"></div>
+                                <div class="text-title animated-background"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <a id="btn-load-more" href="javascript:void(0)" class="btn-seemore hidden" rel="nofollow"
+                       data-url="{{ path('ajax_tag_stream') }}" data-token="{{ loadMoreToken }}">See more</a>
+                {% endif %}
+            </div>
+            <div class="col-sm fl-right">
+            {% include 'common/featured-stories.html.twig' with {'featuredStories': featuredStories, 'type': 1} only %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

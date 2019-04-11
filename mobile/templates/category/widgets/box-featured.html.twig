@@ -1,0 +1,31 @@
+{% if listFeatured is defined %}
+    <section class="pdb-10 mtm">
+        {% for key, item in listFeatured %}
+        {% if key == 0 %}
+        <figure class="news-hot-big">
+            <a href="{{ item.url }}" class="image" title="{{ item.title }}">
+                <img src="{{ item.avatar }}" alt="{{ item.title }}">
+            </a>
+            <figcaption class="caption">
+                <h1 class="title-big">
+                    <a href="{{ item.url }}" title="{{ item.titleHot }}">{{ item.titleHot }}</a>
+                </h1>
+                <p class="s-desc">{{ item.sapo }}</p>
+            </figcaption>
+        </figure>
+        <div class="hot-news-items">
+        <ul class="container list-news-thumb">
+            {% else %}
+                <li class="item-col-news">
+                    <a href="{{ item.url }}" class="image" title="{{ item.title }}">
+                        <img src="{{ item.avatar }}" alt="{{ item.title }}">
+                    </a>
+                    <span class="tag-news">{{ cate_name }}</span>
+                    <h2 class="title-news"><a href="{{ item.url }}" title="{{ item.title }}">{{ item.title }}</a></h2>
+                </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+        </div>
+    </section>
+{% endif %}

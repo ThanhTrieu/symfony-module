@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <section class="specical">
+        <div class="container">
+            {% if firstVideos|length > 0 %}
+                <div class="col-big mgr-30" id="box-video">
+                    {#<figure class="item-news-big">#}
+                    {#<a href="{{ firstVideos.url }}" class="image" title="{{ firstVideos.title_hover }}">#}
+                    {#<img src="{{ firstVideos.avatar }}" alt="{{ firstVideos.title_hover }}">#}
+                    {#</a>#}
+                    {#<span class="play"><i class="icon-play"></i></span>#}
+                    {#</figure>#}
+                    <figure class="item-news-big" id="mainPlayVideo"></figure>
+                    <input type="hidden" value="{{ firstVideos.source_video }}" id="hddUrlVideos"/>
+                    <input type="hidden" value="{{ firstVideos.avatar }}" id="avatarUrlVideos"/>
+                </div>
+            {% endif %}
+            {% if listTopVideo|length > 0 %}
+                <div class="col-sm">
+                    <h2 class="title-box">up next</h2>
+                    <div class="inner-list">
+                        {% for key,item in listTopVideo %}
+                            <figure class="item-news">
+                                <a href="javascript:void(0);" class="image iframetrack" title="{{ item.title_hover }}" data-url="{{ item.url }}" rel="{{ item.source_video }}">
+                                    <img src="{{ item.avatar }}" alt="{{ item.title_hover }}">
+                                </a>
+                                <figcaption class="caption">
+                                    <h3 class="title-news iframetrackTitle">
+                                        <a href="javascript:void(0);" class="title-news" title="{{ item.title_hover }}" data-url="{{ item.url }}" rel="{{ item.source_video }}" data-img="{{ item.avatar }}">
+                                            {{ item.title|raw }}
+                                        </a>
+                                    </h3>
+                                </figcaption>
+                            </figure>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+    {% if listBottomVideos|length > 0 %}
+        <section>
+            <div class="container pdt-40">
+                <div class="clear pdb-5" id="dataListVideos">
+                    {% for key,item in listBottomVideos %}
+                        <figure id="item-{{ item.id }}" class="thumb-video {{ (key+1)%3==1? 'clear':'' }}{{ (key+1)%3==0? 'last':''}}">
+                            <a href="javascript:void(0);" class="image iframetrack" title="{{ item.title_hover }}" data-url="{{ item.url }}" rel="{{ item.source_video }}">
+                                <img src="{{ item.avatar }}" alt="{{ item.title_hover }}" width="370" height="220">
+                                <span class="tag-video" title="{{ item.title_hover }}"><i class="icon-videocam"></i></span>
+                            </a>
+                            <figcaption class="caption">
+                                <h3 class="title-news iframetrackTitle">
+                                    <a href="javascript:void(0);" data-url="{{ item.url }}" rel="{{ item.source_video }}" class="title-news" title="{{ item.title_hover }}" data-img="{{ item.avatar }}">
+                                        {{ item.title|raw }}
+                                    </a>
+                                </h3>
+                            </figcaption>
+                        </figure>
+                    {% endfor %}
+                    {% if loadMoreToken is not null %}
+                        <div id="loading-panel" class="wrapper">
+                            <div class="wrapper-cell">
+                                <div class="image animated-background" style="width: 60%; height: 250px;"></div>
+                                <div class="text">
+                                    <div class="text-title animated-background"></div>
+                                    <div class="text-title animated-background"></div>
+                                    <div class="text-title animated-background"></div>
+                                    <div class="text-title animated-background"></div>
+                                    <div class="text-title animated-background"></div>
+                                    <div class="text-title animated-background"></div>
+                                    <div class="text-title animated-background"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <a href="javascript:void(0);" class="seemore hidden" rel="nofollow" id="btn-load-more" data-url="{{ path('video_ajax') }}" data-token="{{ loadMoreToken }}">See more</a>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+{% endblock %}

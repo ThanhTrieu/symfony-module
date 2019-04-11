@@ -1,0 +1,68 @@
+{% if homeStreamPosts|length %}
+<div class="container">
+    <ul class="list-news">
+        {% for key,item in homeStreamPosts.first %}
+        <li class="item-news {% if loop.index == positionInject and featuredStory is not null or loop.index == loop.length %} last{% endif %}">
+            <h3 class="title-news">
+                <a href="{{ item.url }}" title="{{ item.title }}">{{ item.title|raw }}</a>
+            </h3>
+            <a href="{{ item.url }}" class="image" title="{{ item.title }}">
+                <img src="{{ item.avatar }}" alt="{{ item.title }}">
+                {#<span class="tag-video"><i class="icon-videocam"></i></span>#}
+            </a>
+            <p class="caption">
+                <span class="txt-info">
+                    <a href="{{ item.cate_url }}" class="cl-org" title="{{ item.cate_name }}">{{ item.cate_name|raw }}</a>
+                    - <span class="time-ago" title="{{ item.publish_time_ago }}">{{ item.s_publish_time }}</span>
+                </span>
+                {{ item.sapo|raw }}
+            </p>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% if featuredStory is not null %}
+<figure class="box-trending box-featured-story">
+    <div class="container">
+        <div class="sl-big-game">
+            <ul class="sl-big">
+                <li class="item-sl ">
+                    <span class="cap-game">FEATURED STORY</span>
+                    <a href="{{ featuredStory.url }}" class="image" title="{{ featuredStory.title }}">
+                        <img src="{{ featuredStory.avatar }}" alt="{{ featuredStory.title }}">
+                    </a>
+                    <a href="{{ featuredStory.url }}" class="title-sl title-featured" title="{{ featuredStory.title }}">
+                        {{ featuredStory.title|raw }}
+                    </a>
+                    <p class="caption item-caption">
+                        {{ featuredStory.sapo|raw }}
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</figure>
+{% endif %}
+<div class="container">
+    <ul class="list-news">
+        {% for key,item in homeStreamPosts.second %}
+            <li class="item-news {% if loop.index == positionInject and featuredStory is not null or loop.index == loop.length %} last{% endif %}">
+                <h3 class="title-news">
+                    <a href="{{ item.url }}" title="{{ item.title }}">{{ item.title|raw }}</a>
+                </h3>
+                <a href="{{ item.url }}" class="image" title="{{ item.title }}">
+                    <img src="{{ item.avatar }}" alt="{{ item.title }}">
+                    {#<span class="tag-video"><i class="icon-videocam"></i></span>#}
+                </a>
+                <p class="caption">
+            <span class="txt-info">
+                <a href="{{ item.cate_url }}" class="cl-org" title="{{ item.cate_name }}">{{ item.cate_name|raw }}</a>
+                - <span class="time-ago" title="{{ item.publish_time_ago }}">{{ item.s_publish_time }}</span>
+            </span>
+                    {{ item.sapo|raw }}
+                </p>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}

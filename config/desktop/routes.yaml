@@ -1,0 +1,28 @@
+index:
+    path: /
+    controller: App\Controller\DefaultController::index
+page404:
+    path: "/404"
+    defaults: {_controller: App\Controller\DefaultController:_404page}
+term_condition:
+    path: /term-condition
+    defaults: {_controller: App\Controller\DefaultController:termCondition}
+cache_management:
+    path: /cache-manager
+    defaults: {_controller: App\Controller\CacheManagerController::cacheManager}
+search_all:
+    resource: "routes/search.yaml"
+ajax_post_all:
+    resource: "routes/ajax.yaml"
+video_all:
+    resource: "routes/video.yaml"
+post_all:
+    resource: "routes/post.yaml"
+tag_all:
+    resource: "routes/tag.yaml"
+rss:
+    resource: "routes/rss.yaml"
+category_all:
+    resource: "routes/category.yaml"
+sitemap_all:
+    resource: "routes/sitemap.yaml"
